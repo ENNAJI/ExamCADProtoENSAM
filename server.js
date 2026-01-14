@@ -642,6 +642,21 @@ app.post('/api/admin/send-email', async (req, res) => {
         return res.status(400).json({ error: 'Adresse email requise' });
     }
     
+    // Vérifier si les credentials email sont configurés
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+        return res.status(400).json({ 
+            error: 'Configuration email manquante. Configurez EMAIL_USER et EMAIL_PASS dans les variables d environnement.',
+            useMailto: true,
+            mailto: {
+                email: email,
+                nom: nom,
+                prenom: prenom,
+                login: login,
+                password: password
+            }
+        });
+    }
+    
     const mailOptions = {
         from: process.env.EMAIL_USER || 'noreply@ensam-casa.ma',
         to: email,

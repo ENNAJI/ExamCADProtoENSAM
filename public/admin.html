@@ -913,6 +913,46 @@
                         btn.style.background = '#9b59b6';
                         btn.disabled = false;
                     }, 3000);
+                } else if (data.useMailto) {
+                    // Fallback vers mailto si pas de config email
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    
+                    const m = data.mailto;
+                    const subject = encodeURIComponent('Convocation Examen Conception et Prototypage - ENSAM Casablanca');
+                    const body = encodeURIComponent(`Cher(e) ${m.nom} ${m.prenom},
+
+Vous êtes invité(e) à passer votre examen en ligne sur la plateforme d'examens de l'ENSAM Casablanca.
+
+🔗 Lien de la plateforme :
+https://examcadprotoensam.onrender.com/
+
+🔐 Vos identifiants de connexion :
+- Login : ${m.login}
+- Mot de passe : ${m.password}
+
+📋 Instructions :
+1. Accédez à la plateforme via le lien ci-dessus
+2. Connectez-vous avec vos identifiants personnels
+3. Sélectionnez l'examen à passer
+4. L'examen contient 20 questions et dure 30 minutes
+5. Votre note sera affichée immédiatement après la soumission
+
+⚠️ Important :
+- Vous n'avez droit qu'à une seule tentative par examen
+- Une fois commencé, le chronomètre ne peut pas être arrêté
+- Assurez-vous d'avoir une connexion internet stable
+- Ne fermez pas votre navigateur pendant l'examen
+
+📅 DATE LIMITE DE PASSAGE :
+🔴 Jeudi 16 Janvier 2026 à MINUIT (00h00)
+Aucune soumission ne sera acceptée après cette date.
+
+Pour toute question technique, veuillez contacter votre responsable de filière.
+
+Bonne chance !`);
+                    
+                    window.open(`mailto:${m.email}?subject=${subject}&body=${body}`, '_blank');
                 } else {
                     alert('Erreur: ' + (data.error || 'Erreur inconnue'));
                     btn.innerHTML = originalText;
