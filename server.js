@@ -715,6 +715,64 @@ app.post('/api/admin/send-email', async (req, res) => {
     }
 });
 
+// API Admin - Modifier les informations d'un étudiant
+app.post('/api/admin/update-student', async (req, res) => {
+    if (!isAdmin(req)) {
+        return res.status(403).json({ error: 'Accès refusé' });
+    }
+    
+    const { login, newEmail, newPassword } = req.body;
+    
+    if (!login) {
+        return res.status(400).json({ error: 'Login requis' });
+    }
+    
+    // Mettre à jour le CSV
+    const csvPath = path.join(__dirname, 'data', 'etudiants_import.csv');
+    if (!fs.existsSync(csvPath)) {
+        return res.status(404).json({ error: 'Fichier CSV non trouvé' });
+    }
+    
+    const csvContent = fs.readFileSync(csvPath, 'utf8');
+    const lines = csvContent.trim().split('\n');
+    let updated = false;
+    
+    for (let i = 1; i < lines.length; i++) {
+        const parts = lines[i].split(',');
+        if (parts.length >= 5 && parts[2].trim() === login) {
+            // Mettre à jour le mot de passe si fourni
+            if (newPassword) {
+                parts[3] = newPassword;
+                // Mettre à jour aussi le hash dans etudiants.json
+                if (etudiants[login]) {
+                    const hashedPassword = await bcrypt.hash(newPassword, 10);
+                    etudiants[login].password = hashedPassword;
+                    fs.writeFileSync(
+                        path.join(__dirname, 'data', 'etudiants.json'),
+                        JSON.stringify(etudiants, null, 2)
+                    );
+                }
+            }
+            // Mettre à jour l'email si fourni
+            if (newEmail) {
+                parts[4] = newEmail;
+            }
+            lines[i] = parts.join(',');
+            updated = true;
+            break;
+        }
+    }
+    
+    if (!updated) {
+        return res.status(404).json({ error: 'Étudiant non trouvé' });
+    }
+    
+    // Sauvegarder le CSV
+    fs.writeFileSync(csvPath, lines.join('\n'));
+    
+    res.json({ success: true, message: 'Informations mises à jour' });
+});
+
 // API Admin - Envoyer les emails à tous les étudiants
 app.post('/api/admin/send-all-emails', async (req, res) => {
     if (!isAdmin(req)) {

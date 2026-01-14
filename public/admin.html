@@ -636,7 +636,10 @@
                     <td>${etudiant.annee}</td>
                     <td class="${progressClass}">${etudiant.progression}% (${etudiant.examensPassés}/${etudiant.totalExamens})</td>
                     <td>${examensHtml}</td>
-                    <td><button class="btn" style="padding: 5px 10px; background: #9b59b6; color: white; font-size: 11px;" onclick="envoyerEmail('${etudiant.login}')">📧 Email</button></td>
+                    <td>
+                        <button class="btn" style="padding: 5px 8px; background: #3498db; color: white; font-size: 11px; margin-right: 5px;" onclick="modifierEtudiant('${etudiant.login}')">✏️ Modifier</button>
+                        <button class="btn" style="padding: 5px 8px; background: #9b59b6; color: white; font-size: 11px;" onclick="envoyerEmail('${etudiant.login}')">📧 Email</button>
+                    </td>
                 `;
                 
                 tbody.appendChild(tr);
@@ -874,6 +877,55 @@
             }
         }
         
+        async function modifierEtudiant(login) {
+            const cred = credentialsData[login];
+            if (!cred) {
+                alert('Étudiant non trouvé');
+                return;
+            }
+            
+            // Créer un formulaire modal
+            const currentEmail = cred.email || '';
+            const currentPassword = cred.password || '';
+            
+            const newEmail = prompt(`Email actuel: ${currentEmail}\n\nNouveau email (laisser vide pour ne pas modifier):`, currentEmail);
+            if (newEmail === null) return; // Annulé
+            
+            const newPassword = prompt(`Mot de passe actuel: ${currentPassword}\n\nNouveau mot de passe (laisser vide pour ne pas modifier):`, '');
+            if (newPassword === null) return; // Annulé
+            
+            if (!newEmail && !newPassword) {
+                alert('Aucune modification effectuée');
+                return;
+            }
+            
+            try {
+                const res = await fetch('/api/admin/update-student', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({
+                        login: login,
+                        newEmail: newEmail || undefined,
+                        newPassword: newPassword || undefined
+                    })
+                });
+                
+                const data = await res.json();
+                
+                if (data.success) {
+                    alert('✅ Informations mises à jour avec succès !');
+                    // Mettre à jour les données locales
+                    if (newEmail) credentialsData[login].email = newEmail;
+                    if (newPassword) credentialsData[login].password = newPassword;
+                } else {
+                    alert('Erreur: ' + (data.error || 'Erreur inconnue'));
+                }
+            } catch (e) {
+                alert('Erreur de connexion au serveur');
+            }
+        }
+        
         async function envoyerEmail(login) {
             const cred = credentialsData[login];
             if (!cred) {
@@ -901,6 +953,7 @@
                 const res = await fetch('/api/admin/send-email', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
                     body: JSON.stringify({
                         email: cred.email,
                         nom: cred.nom,
@@ -984,7 +1037,8 @@ Bonne chance !`);
             try {
                 const res = await fetch('/api/admin/send-all-emails', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include'
                 });
                 
                 const data = await res.json();
