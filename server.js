@@ -608,12 +608,13 @@ app.get('/api/admin/credentials', (req, res) => {
         // Ignorer l'en-tête
         for (let i = 1; i < lines.length; i++) {
             const parts = lines[i].split(',');
-            if (parts.length >= 4) {
+            if (parts.length >= 5) {
                 credentials.push({
                     nom: parts[0].trim(),
                     prenom: parts[1].trim(),
                     login: parts[2].trim(),
-                    password: parts[3].trim()
+                    password: parts[3].trim(),
+                    email: parts[4].trim()
                 });
             }
         }

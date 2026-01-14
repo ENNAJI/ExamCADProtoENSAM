@@ -874,11 +874,14 @@
                 return;
             }
             
-            // Demander l'adresse email
-            const email = prompt(`Entrez l'adresse email de ${cred.nom} ${cred.prenom}:`, `${login}@etu.ensam-casa.ma`);
+            if (!cred.email) {
+                alert('Email non disponible pour cet étudiant');
+                return;
+            }
             
-            if (!email) {
-                return; // Annulé
+            // Confirmer l'envoi
+            if (!confirm(`Envoyer l'email à ${cred.nom} ${cred.prenom} (${cred.email}) ?`)) {
+                return;
             }
             
             // Afficher un message de chargement
@@ -892,7 +895,7 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        email: email,
+                        email: cred.email,
                         nom: cred.nom,
                         prenom: cred.prenom,
                         login: cred.login,
