@@ -1,0 +1,1025 @@
+{
+  "metadata": {
+    "cours": "Conception et Prototypage",
+    "filiere": "GEM - Génie Electromécanique",
+    "annee": "2ème année",
+    "departement": "Génie Electrique",
+    "etablissement": "ENSAM Casablanca",
+    "nombre_questions": 100
+  },
+  "questions": [
+    {
+      "id": 1,
+      "type": "QCM",
+      "question": "Quels sont les 3 mondes de la conception ?",
+      "options": [
+        "A) Réel, Virtuel, Abstrait",
+        "B) Imaginaire, Virtuel, Réel",
+        "C) Conceptuel, Numérique, Physique",
+        "D) Théorique, Pratique, Expérimental"
+      ],
+      "reponse": "B",
+      "explication": "Les 3 mondes sont : Monde Imaginaire (IDEF), Monde Virtuel (CAO), Monde Réel (Réalisation)."
+    },
+    {
+      "id": 2,
+      "type": "QCM",
+      "question": "Que signifie IDEF ?",
+      "options": [
+        "A) Integrated Design Engineering Framework",
+        "B) Identification, Définition, Description",
+        "C) Industrial Design Evaluation Function",
+        "D) Interface Design Engineering Format"
+      ],
+      "reponse": "B",
+      "explication": "IDEF = Identification, Définition, Description - méthode utilisée dans le Monde Imaginaire."
+    },
+    {
+      "id": 3,
+      "type": "QCM",
+      "question": "Quel outil est associé au Monde Virtuel ?",
+      "options": [
+        "A) IDEF",
+        "B) SysML",
+        "C) CAO",
+        "D) FAO"
+      ],
+      "reponse": "C",
+      "explication": "Le Monde Virtuel utilise la CAO (Conception Assistée par Ordinateur) pour la conception et l'étude."
+    },
+    {
+      "id": 4,
+      "type": "QCM",
+      "question": "Que signifie FAO ?",
+      "options": [
+        "A) Fabrication Assistée par Ordinateur",
+        "B) Format d'Analyse Optimisé",
+        "C) Fonction d'Assemblage Orientée",
+        "D) Fichier d'Architecture Objet"
+      ],
+      "reponse": "A",
+      "explication": "FAO = Fabrication Assistée par Ordinateur, utilisée dans le Monde Réel pour la réalisation."
+    },
+    {
+      "id": 5,
+      "type": "QCM",
+      "question": "Dans le flux de données, que vient après le CDC ?",
+      "options": [
+        "A) Prototype",
+        "B) Besoins/Exigences/Fonctions",
+        "C) Maquette numérique",
+        "D) Produit"
+      ],
+      "reponse": "B",
+      "explication": "Le flux est : Client → CDC → Besoins/Exigences/Fonctions → CDCF → Concept..."
+    },
+    {
+      "id": 6,
+      "type": "QCM",
+      "question": "Que signifie CDCF ?",
+      "options": [
+        "A) Cahier Des Charges Fonctionnel",
+        "B) Conception De Composants Fonctionnels",
+        "C) Centre De Contrôle Fabrication",
+        "D) Calcul Des Contraintes Fonctionnelles"
+      ],
+      "reponse": "A",
+      "explication": "CDCF = Cahier Des Charges Fonctionnel, document définissant les fonctions attendues du produit."
+    },
+    {
+      "id": 7,
+      "type": "QCM",
+      "question": "Quelle analyse est de type 'Externe' ?",
+      "options": [
+        "A) Analyse d'Aspect",
+        "B) Analyse d'Usage",
+        "C) Analyse Fonctionnelle",
+        "D) Analyse Structurelle"
+      ],
+      "reponse": "B",
+      "explication": "L'Analyse d'Usage est externe car elle étudie l'interaction avec l'environnement."
+    },
+    {
+      "id": 8,
+      "type": "QCM",
+      "question": "Que signifie FU dans la décomposition fonctionnelle ?",
+      "options": [
+        "A) Fonction Unitaire",
+        "B) Fonction d'Usage",
+        "C) Format Universel",
+        "D) Fichier Utilisateur"
+      ],
+      "reponse": "B",
+      "explication": "FU = Fonction d'Usage, ce que le produit doit faire pour l'utilisateur."
+    },
+    {
+      "id": 9,
+      "type": "QCM",
+      "question": "Que signifie FA dans la décomposition fonctionnelle ?",
+      "options": [
+        "A) Fonction Automatique",
+        "B) Format d'Assemblage",
+        "C) Fonction d'Adaptation",
+        "D) Fichier d'Analyse"
+      ],
+      "reponse": "C",
+      "explication": "FA = Fonction d'Adaptation, contraintes liées à l'environnement du produit."
+    },
+    {
+      "id": 10,
+      "type": "QCM",
+      "question": "Quelle est la formule de la fonction principale d'un produit ?",
+      "options": [
+        "A) F.principale = FU × FA",
+        "B) F.principale = FU + FA",
+        "C) F.principale = FU - FA",
+        "D) F.principale = FU / FA"
+      ],
+      "reponse": "B",
+      "explication": "La fonction principale est la somme des fonctions d'usage et d'adaptation : F.principale = FU + FA."
+    },
+    {
+      "id": 11,
+      "type": "QCM",
+      "question": "Dans la hiérarchie de décomposition, qu'est-ce qui vient après 'Assemblage' ?",
+      "options": [
+        "A) Pièce",
+        "B) SubSystème",
+        "C) SousAssemblage",
+        "D) Composantes"
+      ],
+      "reponse": "C",
+      "explication": "La hiérarchie est : SubSystème → Assemblage → SousAssemblage → SubAssemblage → Composantes → Pièce."
+    },
+    {
+      "id": 12,
+      "type": "QCM",
+      "question": "Quel rôle fait partie du 'Chef de projet Conception' ?",
+      "options": [
+        "A) Ing Méthode",
+        "B) Part Designer",
+        "C) Commercial",
+        "D) Ing Industrialisation"
+      ],
+      "reponse": "B",
+      "explication": "Le Chef de projet Conception supervise : Designer/Styliste, Part Designer, Assembly Designer."
+    },
+    {
+      "id": 13,
+      "type": "QCM",
+      "question": "Qui formalisa la géométrie descriptive au XVIIIe siècle ?",
+      "options": [
+        "A) Brunelleschi",
+        "B) Alberti",
+        "C) Monge",
+        "D) Léonard de Vinci"
+      ],
+      "reponse": "C",
+      "explication": "Gaspard Monge a formalisé la géométrie descriptive et les projections normalisées au XVIIIe siècle."
+    },
+    {
+      "id": 14,
+      "type": "QCM",
+      "question": "Quelle est la différence principale entre perspective et projection orthogonale ?",
+      "options": [
+        "A) La perspective est plus précise",
+        "B) Les lignes parallèles convergent en perspective",
+        "C) La projection orthogonale déforme les angles",
+        "D) La perspective permet des mesures fiables"
+      ],
+      "reponse": "B",
+      "explication": "En perspective, les lignes parallèles convergent ; en projection orthogonale, elles restent parallèles."
+    },
+    {
+      "id": 15,
+      "type": "QCM",
+      "question": "Quel dièdre est utilisé en Europe selon la norme ISO ?",
+      "options": [
+        "A) 1er dièdre",
+        "B) 2e dièdre",
+        "C) 3e dièdre",
+        "D) 4e dièdre"
+      ],
+      "reponse": "A",
+      "explication": "Le 1er dièdre est la convention européenne/ISO, le 3e dièdre est américain (ASME)."
+    },
+    {
+      "id": 16,
+      "type": "QCM",
+      "question": "Que représente la ligne de terre (LT) en géométrie descriptive ?",
+      "options": [
+        "A) L'axe vertical",
+        "B) L'intersection entre PV et PH",
+        "C) La ligne d'horizon",
+        "D) L'axe de symétrie"
+      ],
+      "reponse": "B",
+      "explication": "La ligne de terre (LT) est l'intersection entre le plan vertical (PV) et le plan horizontal (PH)."
+    },
+    {
+      "id": 17,
+      "type": "QCM",
+      "question": "Quelle est l'épaisseur typique d'un trait continu fort ?",
+      "options": [
+        "A) 0.1-0.2 mm",
+        "B) 0.25-0.35 mm",
+        "C) 0.5-0.7 mm",
+        "D) 1.0-1.5 mm"
+      ],
+      "reponse": "C",
+      "explication": "Le trait continu fort (arêtes visibles) a une épaisseur de 0.5-0.7 mm."
+    },
+    {
+      "id": 18,
+      "type": "QCM",
+      "question": "Quel type de trait utilise-t-on pour représenter les arêtes cachées ?",
+      "options": [
+        "A) Trait continu fort",
+        "B) Trait continu fin",
+        "C) Trait interrompu fin",
+        "D) Trait mixte fin"
+      ],
+      "reponse": "C",
+      "explication": "Les arêtes cachées sont représentées par un trait interrompu fin (pointillés)."
+    },
+    {
+      "id": 19,
+      "type": "QCM",
+      "question": "Quel type de trait utilise-t-on pour les axes de symétrie ?",
+      "options": [
+        "A) Trait continu fort",
+        "B) Trait continu fin",
+        "C) Trait interrompu fin",
+        "D) Trait mixte fin"
+      ],
+      "reponse": "D",
+      "explication": "Les axes de symétrie sont représentés par un trait mixte fin (trait-point)."
+    },
+    {
+      "id": 20,
+      "type": "QCM",
+      "question": "Quelle norme ISO définit les échelles ?",
+      "options": [
+        "A) ISO 128",
+        "B) ISO 5455",
+        "C) ISO 7200",
+        "D) ISO 129-1"
+      ],
+      "reponse": "B",
+      "explication": "ISO 5455:1979 définit les échelles normalisées pour les dessins techniques."
+    },
+    {
+      "id": 21,
+      "type": "QCM",
+      "question": "Que signifie l'échelle 2:1 ?",
+      "options": [
+        "A) Réduction de moitié",
+        "B) Grandeur réelle",
+        "C) Agrandissement au double",
+        "D) Réduction au quart"
+      ],
+      "reponse": "C",
+      "explication": "L'échelle 2:1 est un agrandissement : le dessin est 2 fois plus grand que la pièce réelle."
+    },
+    {
+      "id": 22,
+      "type": "QCM",
+      "question": "Quelle norme ISO définit le cartouche ?",
+      "options": [
+        "A) ISO 128",
+        "B) ISO 5455",
+        "C) ISO 7200",
+        "D) ISO 129-1"
+      ],
+      "reponse": "C",
+      "explication": "ISO 7200 définit le cartouche (zone d'identification du dessin)."
+    },
+    {
+      "id": 23,
+      "type": "QCM",
+      "question": "Quel angle ont généralement les hachures sur une coupe ?",
+      "options": [
+        "A) 30°",
+        "B) 45°",
+        "C) 60°",
+        "D) 90°"
+      ],
+      "reponse": "B",
+      "explication": "Les hachures sont des traits inclinés à 45° indiquant les parties coupées."
+    },
+    {
+      "id": 24,
+      "type": "QCM",
+      "question": "Quelle est la différence entre une coupe et une section ?",
+      "options": [
+        "A) Aucune différence",
+        "B) La coupe montre l'intérieur complet, la section uniquement la partie coupée",
+        "C) La section est toujours à 45°",
+        "D) La coupe est toujours totale"
+      ],
+      "reponse": "B",
+      "explication": "La coupe montre l'intérieur après découpe fictive, la section ne montre que la partie coupée."
+    },
+    {
+      "id": 25,
+      "type": "QCM",
+      "question": "Que signifie Ra en état de surface ?",
+      "options": [
+        "A) Rayon apparent",
+        "B) Rugosité moyenne arithmétique",
+        "C) Résistance axiale",
+        "D) Rapport d'aspect"
+      ],
+      "reponse": "B",
+      "explication": "Ra = Rugosité moyenne arithmétique, paramètre principal de l'état de surface."
+    },
+    {
+      "id": 26,
+      "type": "QCM",
+      "question": "Quel procédé donne la rugosité Ra la plus fine ?",
+      "options": [
+        "A) Perçage",
+        "B) Fraisage",
+        "C) Tournage fin",
+        "D) Rectification"
+      ],
+      "reponse": "D",
+      "explication": "La rectification donne Ra 0.4-1.6, la plus fine parmi les procédés listés."
+    },
+    {
+      "id": 27,
+      "type": "QCM",
+      "question": "Que signifie M10 en notation de filetage ?",
+      "options": [
+        "A) Module 10",
+        "B) Filetage métrique diamètre 10 mm",
+        "C) Masse 10 kg",
+        "D) Matériau type 10"
+      ],
+      "reponse": "B",
+      "explication": "M10 = Filetage métrique de diamètre nominal 10 mm avec pas standard."
+    },
+    {
+      "id": 28,
+      "type": "QCM",
+      "question": "Que signifie M10x1 ?",
+      "options": [
+        "A) Filetage métrique 10 mm, 1 filet",
+        "B) Filetage métrique 10 mm, pas fin 1 mm",
+        "C) Module 10, classe 1",
+        "D) Masse 10 kg, version 1"
+      ],
+      "reponse": "B",
+      "explication": "M10x1 = Filetage métrique diamètre 10 mm avec pas fin de 1 mm."
+    },
+    {
+      "id": 29,
+      "type": "QCM",
+      "question": "Qu'est-ce qu'un taraudage ?",
+      "options": [
+        "A) Filetage extérieur",
+        "B) Filetage intérieur",
+        "C) Type de vis",
+        "D) Outil de coupe"
+      ],
+      "reponse": "B",
+      "explication": "Le taraudage est un filetage intérieur, réalisé dans un trou."
+    },
+    {
+      "id": 30,
+      "type": "QCM",
+      "question": "Que signifie BOM ?",
+      "options": [
+        "A) Base Of Manufacturing",
+        "B) Bill Of Materials",
+        "C) Block Of Modules",
+        "D) Bureau Of Methods"
+      ],
+      "reponse": "B",
+      "explication": "BOM = Bill Of Materials = Nomenclature, liste des composants d'un assemblage."
+    },
+    {
+      "id": 31,
+      "type": "QCM",
+      "question": "Quel module CATIA V5 est utilisé pour la conception de pièces 3D ?",
+      "options": [
+        "A) Assembly Design",
+        "B) Drafting",
+        "C) Part Design",
+        "D) Sketcher"
+      ],
+      "reponse": "C",
+      "explication": "Part Design est le module CATIA pour la conception de pièces 3D."
+    },
+    {
+      "id": 32,
+      "type": "QCM",
+      "question": "Quel module CATIA V5 est utilisé pour la mise en plan 2D ?",
+      "options": [
+        "A) Assembly Design",
+        "B) Drafting",
+        "C) Part Design",
+        "D) Sketcher"
+      ],
+      "reponse": "B",
+      "explication": "Drafting est le module CATIA pour la mise en plan 2D."
+    },
+    {
+      "id": 33,
+      "type": "QCM",
+      "question": "Quelle fonction CATIA permet de créer un volume par extrusion ?",
+      "options": [
+        "A) Pocket",
+        "B) Shaft",
+        "C) Pad",
+        "D) Fillet"
+      ],
+      "reponse": "C",
+      "explication": "Pad (Extrusion) crée un volume à partir d'une esquisse en l'extrudant."
+    },
+    {
+      "id": 34,
+      "type": "QCM",
+      "question": "Quelle fonction CATIA permet d'enlever de la matière ?",
+      "options": [
+        "A) Pad",
+        "B) Pocket",
+        "C) Shaft",
+        "D) Chamfer"
+      ],
+      "reponse": "B",
+      "explication": "Pocket (Poche) enlève de la matière à partir d'une esquisse."
+    },
+    {
+      "id": 35,
+      "type": "QCM",
+      "question": "Quelle fonction CATIA crée un solide de révolution ?",
+      "options": [
+        "A) Pad",
+        "B) Pocket",
+        "C) Shaft",
+        "D) Fillet"
+      ],
+      "reponse": "C",
+      "explication": "Shaft (Révolution) crée un solide en faisant tourner une esquisse autour d'un axe."
+    },
+    {
+      "id": 36,
+      "type": "QCM",
+      "question": "Quelle fonction CATIA permet d'arrondir les arêtes ?",
+      "options": [
+        "A) Chamfer",
+        "B) Fillet",
+        "C) Pocket",
+        "D) Pad"
+      ],
+      "reponse": "B",
+      "explication": "Fillet (Congé) arrondit les arêtes d'une pièce."
+    },
+    {
+      "id": 37,
+      "type": "QCM",
+      "question": "Quelle fonction CATIA permet de casser les arêtes ?",
+      "options": [
+        "A) Chamfer",
+        "B) Fillet",
+        "C) Pocket",
+        "D) Pad"
+      ],
+      "reponse": "A",
+      "explication": "Chamfer (Chanfrein) casse les arêtes en créant une surface plane inclinée."
+    },
+    {
+      "id": 38,
+      "type": "QCM",
+      "question": "Quelle contrainte d'assemblage fait coïncider deux éléments ?",
+      "options": [
+        "A) Contact",
+        "B) Offset",
+        "C) Coïncidence",
+        "D) Angle"
+      ],
+      "reponse": "C",
+      "explication": "La contrainte Coïncidence fait coïncider deux éléments (points, axes, plans)."
+    },
+    {
+      "id": 39,
+      "type": "QCM",
+      "question": "Dans la logique de conception CAO, si une pièce a plusieurs corps, elle est de type ?",
+      "options": [
+        "A) Corps Unique",
+        "B) Corps Composé",
+        "C) Corps Simple",
+        "D) Corps Multiple"
+      ],
+      "reponse": "B",
+      "explication": "Si Nbr de corps > 1, la pièce est de type Corps Composé."
+    },
+    {
+      "id": 40,
+      "type": "QCM",
+      "question": "Quelle fonction CAO utilise-t-on pour une forme prismatique ?",
+      "options": [
+        "A) Révolution",
+        "B) Extrusion",
+        "C) Balayage",
+        "D) Lissage"
+      ],
+      "reponse": "B",
+      "explication": "Une forme prismatique (contour vectoriel) utilise la fonction Extrusion."
+    },
+    {
+      "id": 41,
+      "type": "QCM",
+      "question": "Quelle fonction CAO utilise-t-on pour une forme cylindrique ?",
+      "options": [
+        "A) Extrusion",
+        "B) Révolution",
+        "C) Balayage",
+        "D) Lissage"
+      ],
+      "reponse": "B",
+      "explication": "Une forme cylindrique (contour circulaire) utilise la fonction Révolution."
+    },
+    {
+      "id": 42,
+      "type": "QCM",
+      "question": "Si un contour a 2 axes de symétrie, quelle portion suffit à dessiner ?",
+      "options": [
+        "A) Tout le contour",
+        "B) 1/2 du contour",
+        "C) 1/4 du contour",
+        "D) 1/8 du contour"
+      ],
+      "reponse": "C",
+      "explication": "Avec 2 axes de symétrie (contour axisymétrique), 1/4 du contour suffit."
+    },
+    {
+      "id": 43,
+      "type": "QCM",
+      "question": "Que signifie DMU ?",
+      "options": [
+        "A) Design Manufacturing Unit",
+        "B) Digital Mock-Up",
+        "C) Document Management Utility",
+        "D) Data Model Update"
+      ],
+      "reponse": "B",
+      "explication": "DMU = Digital Mock-Up = Maquette numérique pour l'assemblage virtuel."
+    },
+    {
+      "id": 44,
+      "type": "QCM",
+      "question": "Que signifie MBD ?",
+      "options": [
+        "A) Model Based Definition",
+        "B) Manufacturing Base Data",
+        "C) Mechanical Block Design",
+        "D) Module Based Development"
+      ],
+      "reponse": "A",
+      "explication": "MBD = Model Based Definition = Définition basée sur le modèle 3D (sans plan papier)."
+    },
+    {
+      "id": 45,
+      "type": "QCM",
+      "question": "Que signifie PMI ?",
+      "options": [
+        "A) Product Manufacturing Information",
+        "B) Plan Management Interface",
+        "C) Process Model Integration",
+        "D) Part Modification Index"
+      ],
+      "reponse": "A",
+      "explication": "PMI = Product Manufacturing Information = Informations de fabrication intégrées au modèle 3D."
+    },
+    {
+      "id": 46,
+      "type": "QCM",
+      "question": "Que signifie PLM ?",
+      "options": [
+        "A) Product Lifecycle Management",
+        "B) Plan Layout Module",
+        "C) Part List Manager",
+        "D) Process Logic Model"
+      ],
+      "reponse": "A",
+      "explication": "PLM = Product Lifecycle Management = Gestion du cycle de vie du produit."
+    },
+    {
+      "id": 47,
+      "type": "QCM",
+      "question": "Que signifie STEP ?",
+      "options": [
+        "A) Standard Technical Exchange Protocol",
+        "B) Standard for the Exchange of Product Data",
+        "C) System Transfer Engineering Process",
+        "D) Structured Technical Export Package"
+      ],
+      "reponse": "B",
+      "explication": "STEP = Standard for the Exchange of Product Data (ISO 10303)."
+    },
+    {
+      "id": 48,
+      "type": "QCM",
+      "question": "Quelle extension de fichier utilise le format STEP ?",
+      "options": [
+        "A) .dwg",
+        "B) .stp ou .step",
+        "C) .igs",
+        "D) .stl"
+      ],
+      "reponse": "B",
+      "explication": "Le format STEP utilise les extensions .stp ou .step."
+    },
+    {
+      "id": 49,
+      "type": "QCM",
+      "question": "Quel est l'avantage principal du format STEP ?",
+      "options": [
+        "A) Fichier plus petit",
+        "B) Format neutre pour l'échange entre logiciels CAO",
+        "C) Meilleure qualité visuelle",
+        "D) Plus rapide à ouvrir"
+      ],
+      "reponse": "B",
+      "explication": "STEP est un format neutre permettant l'échange de données CAO entre différents logiciels."
+    },
+    {
+      "id": 50,
+      "type": "QCM",
+      "question": "Quelle est la vue principale en dessin industriel ?",
+      "options": [
+        "A) Vue de dessus",
+        "B) Vue de face",
+        "C) Vue de droite",
+        "D) Vue de dessous"
+      ],
+      "reponse": "B",
+      "explication": "La vue de face est la vue principale qui donne le maximum d'informations sur la pièce."
+    },
+    {
+      "id": 51,
+      "type": "vrai_faux",
+      "question": "Le Monde Imaginaire utilise la CAO comme outil principal.",
+      "reponse": false,
+      "explication": "Le Monde Imaginaire utilise IDEF, AF/AV, SysML. La CAO est utilisée dans le Monde Virtuel."
+    },
+    {
+      "id": 52,
+      "type": "vrai_faux",
+      "question": "Le 3e dièdre est la convention utilisée en Amérique du Nord.",
+      "reponse": true,
+      "explication": "Le 3e dièdre est la convention américaine (ASME), le 1er dièdre est européen (ISO)."
+    },
+    {
+      "id": 53,
+      "type": "vrai_faux",
+      "question": "En projection orthogonale, les lignes parallèles convergent.",
+      "reponse": false,
+      "explication": "En projection orthogonale, les lignes parallèles restent parallèles. Elles convergent en perspective."
+    },
+    {
+      "id": 54,
+      "type": "vrai_faux",
+      "question": "La vue de face est la vue principale qui donne le maximum d'informations.",
+      "reponse": true,
+      "explication": "La vue de face est choisie comme vue principale car elle donne le maximum d'informations sur la pièce."
+    },
+    {
+      "id": 55,
+      "type": "vrai_faux",
+      "question": "Les hachures sur une coupe sont inclinées à 60°.",
+      "reponse": false,
+      "explication": "Les hachures sont inclinées à 45°, pas à 60°."
+    },
+    {
+      "id": 56,
+      "type": "vrai_faux",
+      "question": "L'échelle 1:2 signifie que le dessin est 2 fois plus petit que la pièce réelle.",
+      "reponse": true,
+      "explication": "L'échelle 1:2 est une réduction : le dessin est 2 fois plus petit que la réalité."
+    },
+    {
+      "id": 57,
+      "type": "vrai_faux",
+      "question": "Ra est un paramètre de rugosité de surface.",
+      "reponse": true,
+      "explication": "Ra (Rugosité moyenne arithmétique) est le paramètre principal de l'état de surface."
+    },
+    {
+      "id": 58,
+      "type": "vrai_faux",
+      "question": "Le perçage donne une meilleure rugosité que la rectification.",
+      "reponse": false,
+      "explication": "La rectification (Ra 0.4-1.6) donne une bien meilleure rugosité que le perçage (Ra 6.3-12.5)."
+    },
+    {
+      "id": 59,
+      "type": "vrai_faux",
+      "question": "Part Design est le module CATIA pour l'assemblage de composants.",
+      "reponse": false,
+      "explication": "Part Design est pour la conception de pièces 3D. Assembly Design est pour l'assemblage."
+    },
+    {
+      "id": 60,
+      "type": "vrai_faux",
+      "question": "La fonction Pad dans CATIA permet d'enlever de la matière.",
+      "reponse": false,
+      "explication": "Pad (Extrusion) ajoute de la matière. Pocket (Poche) enlève de la matière."
+    },
+    {
+      "id": 61,
+      "type": "vrai_faux",
+      "question": "La fonction Shaft crée un solide de révolution.",
+      "reponse": true,
+      "explication": "Shaft (Révolution) crée un solide en faisant tourner une esquisse autour d'un axe."
+    },
+    {
+      "id": 62,
+      "type": "vrai_faux",
+      "question": "Fillet permet de casser les arêtes d'une pièce.",
+      "reponse": false,
+      "explication": "Fillet (Congé) arrondit les arêtes. Chamfer (Chanfrein) casse les arêtes."
+    },
+    {
+      "id": 63,
+      "type": "vrai_faux",
+      "question": "Une forme cylindrique utilise la fonction Extrusion.",
+      "reponse": false,
+      "explication": "Une forme cylindrique (contour circulaire) utilise la fonction Révolution, pas Extrusion."
+    },
+    {
+      "id": 64,
+      "type": "vrai_faux",
+      "question": "Si un contour a 1 axe de symétrie, il suffit de dessiner 1/2 du contour.",
+      "reponse": true,
+      "explication": "Avec 1 axe de symétrie (contour iso-statique), 1/2 du contour suffit."
+    },
+    {
+      "id": 65,
+      "type": "vrai_faux",
+      "question": "STEP est un format propriétaire de CATIA.",
+      "reponse": false,
+      "explication": "STEP (ISO 10303) est un format neutre et ouvert, pas propriétaire."
+    },
+    {
+      "id": 66,
+      "type": "vrai_faux",
+      "question": "MBD permet d'intégrer les cotes et tolérances directement dans le modèle 3D.",
+      "reponse": true,
+      "explication": "MBD (Model Based Definition) intègre les informations de fabrication dans le modèle 3D."
+    },
+    {
+      "id": 67,
+      "type": "vrai_faux",
+      "question": "Le CDC vient avant les Exigences dans le flux de données.",
+      "reponse": true,
+      "explication": "Le flux est : Client → CDC → Besoins/Exigences/Fonctions..."
+    },
+    {
+      "id": 68,
+      "type": "vrai_faux",
+      "question": "L'Analyse Fonctionnelle est de type externe.",
+      "reponse": false,
+      "explication": "L'Analyse Fonctionnelle est de type interne. L'Analyse d'Usage est externe."
+    },
+    {
+      "id": 69,
+      "type": "vrai_faux",
+      "question": "FU signifie Fonction d'Usage.",
+      "reponse": true,
+      "explication": "FU = Fonction d'Usage, ce que le produit doit faire pour l'utilisateur."
+    },
+    {
+      "id": 70,
+      "type": "vrai_faux",
+      "question": "Le taraudage est un filetage extérieur.",
+      "reponse": false,
+      "explication": "Le taraudage est un filetage intérieur (dans un trou)."
+    },
+    {
+      "id": 71,
+      "type": "vrai_faux",
+      "question": "Monge a formalisé la géométrie descriptive au XIXe siècle.",
+      "reponse": false,
+      "explication": "Monge a formalisé la géométrie descriptive au XVIIIe siècle, pas au XIXe."
+    },
+    {
+      "id": 72,
+      "type": "vrai_faux",
+      "question": "Le trait mixte fin est utilisé pour les axes de symétrie.",
+      "reponse": true,
+      "explication": "Le trait mixte fin (trait-point) est utilisé pour représenter les axes de symétrie."
+    },
+    {
+      "id": 73,
+      "type": "vrai_faux",
+      "question": "La nomenclature (BOM) liste tous les composants d'un assemblage.",
+      "reponse": true,
+      "explication": "BOM (Bill Of Materials) = Nomenclature, liste complète des composants d'un assemblage."
+    },
+    {
+      "id": 74,
+      "type": "vrai_faux",
+      "question": "DMU signifie Design Manufacturing Unit.",
+      "reponse": false,
+      "explication": "DMU = Digital Mock-Up (Maquette numérique), pas Design Manufacturing Unit."
+    },
+    {
+      "id": 75,
+      "type": "vrai_faux",
+      "question": "Le Sketcher est utilisé pour créer des esquisses 2D dans CATIA.",
+      "reponse": true,
+      "explication": "Le Sketcher est le module CATIA pour la création d'esquisses 2D."
+    },
+    {
+      "id": 76,
+      "type": "redaction",
+      "question": "Décrivez les 3 mondes de la conception et leurs outils associés.",
+      "reponse": "Les 3 mondes sont : 1) Monde Imaginaire : phase d'identification, définition et description utilisant IDEF, AF/AV, SysML. 2) Monde Virtuel : phase de conception et étude utilisant la CAO et IAO/VAO. 3) Monde Réel : phase de réalisation utilisant FAO, PAO, InAO. Le flux va du Problème vers la Solution en passant par ces 3 mondes."
+    },
+    {
+      "id": 77,
+      "type": "redaction",
+      "question": "Expliquez la méthode IDEF et ses composantes.",
+      "reponse": "IDEF signifie Identification, Définition, Description. C'est une méthode utilisée dans le Monde Imaginaire pour analyser les exigences. Elle comprend : l'Analyse d'Aspect (croquis, représentation visuelle), l'Analyse d'Usage (externe, interaction avec l'environnement), l'Analyse Fonctionnelle (interne, fonctions du produit), et l'Analyse Structurelle (architecture du produit)."
+    },
+    {
+      "id": 78,
+      "type": "redaction",
+      "question": "Expliquez la différence entre FU et FA dans la décomposition fonctionnelle.",
+      "reponse": "FU (Fonction d'Usage) représente ce que le produit doit faire pour satisfaire le besoin de l'utilisateur. FA (Fonction d'Adaptation) représente les contraintes liées à l'environnement du produit. La fonction principale d'un produit est F.principale = FU + FA. Ces fonctions se déclinent en fonctions secondaires (FUi + FAi), de service, techniques, et d'assemblage à chaque niveau de la hiérarchie."
+    },
+    {
+      "id": 79,
+      "type": "redaction",
+      "question": "Décrivez le flux de données complet du processus de développement de produit.",
+      "reponse": "Le flux de données est : Client → CDC (Cahier Des Charges) → Besoins/Exigences/Fonctions → CDCF (Cahier Des Charges Fonctionnel) → Concept → Maquette numérique → Prototype → Gammes/Phases → Produit → Produit Marchand. Ce flux traverse les 3 mondes : Imaginaire, Virtuel et Réel."
+    },
+    {
+      "id": 80,
+      "type": "redaction",
+      "question": "Expliquez la différence entre le 1er et le 3e dièdre.",
+      "reponse": "Le 1er dièdre est la convention européenne (ISO) où les vues sont disposées autour de la vue de face selon une logique spécifique. Le 3e dièdre est la convention américaine (ASME) avec une disposition inversée des vues. La différence principale réside dans la position relative des vues par rapport à la vue de face."
+    },
+    {
+      "id": 81,
+      "type": "redaction",
+      "question": "Décrivez la logique de conception CAO pour l'analyse d'une pièce.",
+      "reponse": "La logique de conception CAO comprend 3 étapes : A) Analyse du corps : déterminer si la pièce est un corps unique (1) ou composé (+). B) Analyse de volume : selon la forme (prismatique → Extrusion, cylindrique → Révolution), avec les fonctions Balayage et Lissage pour les formes complexes. C) Analyse esquisse : vérifier si le contour est fermé, puis analyser la symétrie (0, 1, 2 ou + axes) pour optimiser le dessin. Le résultat est l'ajout ou l'enlèvement de matière."
+    },
+    {
+      "id": 82,
+      "type": "redaction",
+      "question": "Quels sont les principaux modules CATIA V5 et leurs fonctions ?",
+      "reponse": "Les principaux modules CATIA V5 sont : Part Design (conception de pièces 3D), Assembly Design (assemblage de composants), Drafting (mise en plan 2D), Sketcher (création d'esquisses 2D). Le flux complet inclut aussi : Knowledge Advisor/Expert (gestion de connaissance), Product Structure, DMU (maquette numérique), Simulation, Usinage, Delmia et Innovia."
+    },
+    {
+      "id": 83,
+      "type": "redaction",
+      "question": "Expliquez les différents types de coupes en dessin industriel.",
+      "reponse": "Les types de coupes sont : Coupe totale (découpe complète de la pièce), Coupe partielle (découpe d'une partie seulement), Coupe brisée ou cassée (plan de coupe non rectiligne), Coupe décalée (plusieurs plans de coupe décalés). Les hachures à 45° indiquent les parties coupées. La section ne montre que la partie coupée, contrairement à la coupe qui montre aussi ce qui est derrière."
+    },
+    {
+      "id": 84,
+      "type": "redaction",
+      "question": "Décrivez les différents types de traits utilisés en dessin industriel.",
+      "reponse": "Les types de traits sont : Trait continu fort (0.5-0.7 mm) pour les arêtes visibles, Trait continu fin (0.25-0.35 mm) pour les lignes de cote et hachures, Trait interrompu fin (0.25-0.35 mm) pour les arêtes cachées, Trait mixte fin (0.25-0.35 mm) pour les axes de symétrie. Ces conventions sont définies par la norme ISO 128."
+    },
+    {
+      "id": 85,
+      "type": "redaction",
+      "question": "Expliquez ce que sont MBD et PMI et leurs avantages.",
+      "reponse": "MBD (Model Based Definition) est une approche où toutes les informations de définition du produit sont intégrées au modèle 3D, sans nécessiter de plan papier. PMI (Product Manufacturing Information) désigne les informations de fabrication (cotes, tolérances, notes) intégrées au modèle 3D. Les avantages sont : unicité de la source, automatisation de l'usinage et du contrôle, réduction des erreurs, traçabilité complète."
+    },
+    {
+      "id": 86,
+      "type": "redaction",
+      "question": "Décrivez la hiérarchie de décomposition d'un produit.",
+      "reponse": "La hiérarchie de décomposition est : Produit (F.principale = FU + FA) → Système → SystèmeS (F.Secondaire) → SousSystems (F.Service) → SubSystème (F.Technique) → Assemblage (F.D'assemblage) → SousAssemblage → SubAssemblage → Composantes → Pièce → Matière Première. Chaque niveau a ses fonctions associées (FUi + FAi)."
+    },
+    {
+      "id": 87,
+      "type": "redaction",
+      "question": "Quels sont les rôles dans la chaîne de développement de produit ?",
+      "reponse": "La chaîne des rôles est : Commercial → Chargé d'affaire (Commerciaux, IS, PST-WBS) → Expert Métier → Ingénieur Système → Architect Produit → Chef de projet Conception (Designer/Styliste, Part Designer, Assembly Designer) → Concepteur → Ingénieur Calcul → Prototypage → Chef de projet Industrialisation (Ing Méthode, Ing Industrialisation, Ing Organisation Industriel) → Bureau Méthode → Fabrication → Gestion Production."
+    },
+    {
+      "id": 88,
+      "type": "redaction",
+      "question": "Expliquez l'importance de la normalisation en dessin industriel.",
+      "reponse": "La normalisation est essentielle pour : éviter l'ambiguïté (interprétation unique), assurer l'interchangeabilité (pièces fabriquées en différents lieux s'assemblent sans retouche), garantir la qualité et conformité (vérifiabilité par contrôle métrologique), améliorer l'efficacité (gains de temps, moins de non-qualités). Sans normes, on risque l'incompatibilité des pièces, la non-traçabilité et des délais de clarification."
+    },
+    {
+      "id": 89,
+      "type": "redaction",
+      "question": "Décrivez les principales fonctions de Part Design dans CATIA.",
+      "reponse": "Les principales fonctions de Part Design sont : Pad (Extrusion) pour créer un volume à partir d'une esquisse, Pocket (Poche) pour enlever de la matière, Shaft (Révolution) pour créer un solide de révolution, Fillet (Congé) pour arrondir les arêtes, Chamfer (Chanfrein) pour casser les arêtes. On utilise aussi Balayage pour les raccords et Lissage pour les formes complexes."
+    },
+    {
+      "id": 90,
+      "type": "redaction",
+      "question": "Expliquez les avantages de la conception paramétrique en CAO.",
+      "reponse": "La conception paramétrique permet d'utiliser des paramètres modifiables pour définir les dimensions et les relations entre les éléments d'une pièce. Les avantages sont : modification rapide du modèle en changeant les valeurs des paramètres, relations entre les cotes qui se mettent à jour automatiquement, réutilisation des modèles pour des variantes de pièces, et historique des opérations dans l'arbre de construction permettant de revenir en arrière."
+    },
+    {
+      "id": 91,
+      "type": "QCM",
+      "question": "Quel est le format normalisé le plus petit ?",
+      "options": [
+        "A) A0",
+        "B) A1",
+        "C) A3",
+        "D) A4"
+      ],
+      "reponse": "D",
+      "explication": "A4 est le plus petit format normalisé (210 x 297 mm). A0 est le plus grand."
+    },
+    {
+      "id": 92,
+      "type": "QCM",
+      "question": "Que contient le cartouche d'un dessin technique ?",
+      "options": [
+        "A) Uniquement le titre",
+        "B) Titre, échelle, date, auteur, indice de révision",
+        "C) Les cotes principales",
+        "D) La nomenclature"
+      ],
+      "reponse": "B",
+      "explication": "Le cartouche contient les informations d'identification : titre, échelle, date, auteur, indice de révision."
+    },
+    {
+      "id": 93,
+      "type": "QCM",
+      "question": "Quelle norme ISO définit les principes de cotation ?",
+      "options": [
+        "A) ISO 128",
+        "B) ISO 129-1",
+        "C) ISO 5455",
+        "D) ISO 7200"
+      ],
+      "reponse": "B",
+      "explication": "ISO 129-1:2018 définit les principes de cotation en dessin technique."
+    },
+    {
+      "id": 94,
+      "type": "QCM",
+      "question": "Qu'est-ce qu'une clavette ?",
+      "options": [
+        "A) Un type de vis",
+        "B) Un élément de liaison en rotation",
+        "C) Un outil de mesure",
+        "D) Un type de filetage"
+      ],
+      "reponse": "B",
+      "explication": "Une clavette est un élément mécanique assurant la liaison en rotation entre deux pièces."
+    },
+    {
+      "id": 95,
+      "type": "QCM",
+      "question": "À quoi sert une goupille ?",
+      "options": [
+        "A) Liaison en rotation",
+        "B) Positionnement et arrêt",
+        "C) Étanchéité",
+        "D) Transmission de puissance"
+      ],
+      "reponse": "B",
+      "explication": "Une goupille sert au positionnement et à l'arrêt de pièces mécaniques."
+    },
+    {
+      "id": 96,
+      "type": "vrai_faux",
+      "question": "Le format A0 est plus petit que le format A4.",
+      "reponse": false,
+      "explication": "A0 est le plus grand format (841 x 1189 mm), A4 est le plus petit (210 x 297 mm)."
+    },
+    {
+      "id": 97,
+      "type": "vrai_faux",
+      "question": "ISO 129-1 définit les principes de cotation.",
+      "reponse": true,
+      "explication": "ISO 129-1:2018 est la norme qui définit les principes de cotation en dessin technique."
+    },
+    {
+      "id": 98,
+      "type": "vrai_faux",
+      "question": "La contrainte Offset dans CATIA définit un angle entre deux éléments.",
+      "reponse": false,
+      "explication": "Offset définit un décalage entre deux éléments. Angle définit un angle."
+    },
+    {
+      "id": 99,
+      "type": "redaction",
+      "question": "Décrivez l'évolution historique du dessin technique.",
+      "reponse": "L'évolution du dessin technique suit les étapes : Antiquité (géométrie, art préhistorique) → Renaissance (naissance de la perspective avec Brunelleschi et Alberti) → XVIIIe siècle (Monge formalise la géométrie descriptive et les projections normalisées) → XIXe siècle (Révolution industrielle, besoin de plans pour la production de masse) → XXe siècle (Normalisation ISO) → XXe-XXIe siècle (CAO, MBD/PMI)."
+    },
+    {
+      "id": 100,
+      "type": "redaction",
+      "question": "Expliquez les contraintes d'assemblage dans CATIA.",
+      "reponse": "Les contraintes d'assemblage dans CATIA permettent de positionner les composants les uns par rapport aux autres. Les principales sont : Coïncidence (faire coïncider deux éléments comme des points, axes ou plans), Contact (mettre en contact deux surfaces), Offset (définir un décalage entre deux éléments), Angle (définir un angle entre deux éléments). Ces contraintes permettent de simuler le comportement réel de l'assemblage."
+    }
+  ]
+}

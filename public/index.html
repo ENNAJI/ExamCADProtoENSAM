@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Conception et Prototypage - ENSAM Casablanca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Page de connexion -->
+        <div id="login-page" class="page active">
+            <div class="login-container">
+                <div class="login-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/ENSAM_Casablanca_logo.png/200px-ENSAM_Casablanca_logo.png" alt="ENSAM Logo" class="logo" onerror="this.style.display='none'">
+                    <h1>Examen Conception et Prototypage</h1>
+                    <p>Masters GEM/MSEI - ENSAM Casablanca</p>
+                </div>
+                <form id="login-form" class="login-form">
+                    <div class="form-group">
+                        <label for="login">Identifiant</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="login" name="login" required placeholder="Votre identifiant">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" name="password" required placeholder="Votre mot de passe">
+                        </div>
+                    </div>
+                    <div id="login-error" class="error-message"></div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Se connecter
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Page de sélection de matière -->
+        <div id="selection-page" class="page">
+            <header class="header">
+                <div class="header-content">
+                    <h2><i class="fas fa-graduation-cap"></i> Conception et Prototypage</h2>
+                    <div class="user-info">
+                        <span id="user-name"></span>
+                        <button id="logout-btn" class="btn btn-outline">
+                            <i class="fas fa-sign-out-alt"></i> Déconnexion
+                        </button>
+                    </div>
+                </div>
+            </header>
+            <main class="main-content">
+                <div class="welcome-card">
+                    <h3>Bienvenue, <span id="welcome-name"></span></h3>
+                    <div class="student-details">
+                        <p><i class="fas fa-building"></i> Département: <strong id="detail-dept"></strong></p>
+                        <p><i class="fas fa-users"></i> Filière: <strong id="detail-filiere"></strong></p>
+                        <p><i class="fas fa-calendar"></i> Année: <strong id="detail-annee"></strong></p>
+                    </div>
+                </div>
+                
+                <div class="matieres-section">
+                    <h3><i class="fas fa-book"></i> Examens disponibles</h3>
+                    <div id="matieres-list" class="matieres-grid">
+                        <!-- Les matières seront chargées dynamiquement -->
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Page d'examen -->
+        <div id="exam-page" class="page">
+            <header class="header exam-header">
+                <div class="header-content">
+                    <h2 id="exam-title"><i class="fas fa-file-alt"></i> Examen en cours</h2>
+                    <div class="timer-container">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer">30:00</span>
+                    </div>
+                </div>
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+            </header>
+            <main class="exam-content">
+                <div id="questions-container">
+                    <!-- Les questions seront chargées dynamiquement -->
+                </div>
+                <div class="exam-actions">
+                    <button id="submit-exam" class="btn btn-success btn-large">
+                        <i class="fas fa-paper-plane"></i> Soumettre l'examen
+                    </button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Page de résultats -->
+        <div id="results-page" class="page">
+            <header class="header">
+                <div class="header-content">
+                    <h2><i class="fas fa-chart-bar"></i> Résultats de l'examen</h2>
+                </div>
+            </header>
+            <main class="main-content">
+                <div class="results-card">
+                    <div class="score-circle" id="score-circle">
+                        <span id="score-value">0</span>
+                        <span class="score-label">/20</span>
+                    </div>
+                    <div class="results-details">
+                        <p id="results-message"></p>
+                        <p>Questions correctes: <strong><span id="correct-count">0</span>/<span id="total-count">0</span></strong></p>
+                    </div>
+                </div>
+                
+                <div class="corrections-section">
+                    <h3><i class="fas fa-list-check"></i> Corrections</h3>
+                    <div id="corrections-list">
+                        <!-- Les corrections seront affichées ici -->
+                    </div>
+                </div>
+                
+                <div class="results-actions">
+                    <button id="back-to-selection" class="btn btn-primary">
+                        <i class="fas fa-arrow-left"></i> Retour aux examens
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal de confirmation -->
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content">
+            <h3><i class="fas fa-exclamation-triangle"></i> Confirmation</h3>
+            <p id="modal-message">Êtes-vous sûr de vouloir soumettre votre examen ?</p>
+            <div class="modal-actions">
+                <button id="modal-cancel" class="btn btn-outline">Annuler</button>
+                <button id="modal-confirm" class="btn btn-primary">Confirmer</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

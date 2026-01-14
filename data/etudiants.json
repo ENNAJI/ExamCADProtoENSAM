@@ -1,0 +1,498 @@
+{
+  "aatar.taha": {
+    "password": "$2a$10$plrSXvA0mEXEXa/vpM9de.m15V1Qm8920DyIGTBSQbPABRDAOaFj2",
+    "nom": "AATAR",
+    "prenom": "Taha",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "akif.taha": {
+    "password": "$2a$10$nk8fTLMyEuhUpnpcrSZjSuSyf5j.GLKz0Silk8sxfwivkm9rw/i8S",
+    "nom": "Akif",
+    "prenom": "Taha",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "antra.hiba": {
+    "password": "$2a$10$BrQ6jaiTRb7wZwl8A4s6r.WOxWnmGd1TlVThmBor6Z5/pPQr0UJY6",
+    "nom": "Antra",
+    "prenom": "Hiba",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "bengannoune.amina": {
+    "password": "$2a$10$.9z0QEbs6lSESAbgoIAJreoMYBBkpWW0GXQ3OzzKNTsJ3FXffWKDO",
+    "nom": "Ben Gannoune",
+    "prenom": "Amina",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "boukharouaa.yasmine": {
+    "password": "$2a$10$XCrZG0IcB8h67AzAZXaMFOCnbg7LvGwwSawQ1tVVMkC3rbr82tQbW",
+    "nom": "BOUKHAROUAA",
+    "prenom": "Yasmine",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "boulla.noura": {
+    "password": "$2a$10$XtCbh7gDTCiR/T7YHRrFK.yFe.1SqEHhkg5arCzbi5rkflaCSo8aa",
+    "nom": "BOULLA",
+    "prenom": "Noura",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "chaabani.aymen": {
+    "password": "$2a$10$9w3J3pF.9M8t12HgO7ATzeshIJJEWrpvr/Ino6IzmfY0OxVDDusla",
+    "nom": "CHAABANI",
+    "prenom": "Aymen",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "edary.mohamed": {
+    "password": "$2a$10$sXDEuzvG7OVtSqv3BxVW8OMZzzT/hdFecEkMewUMOEa91BvPuxF82",
+    "nom": "edary",
+    "prenom": "mohamed",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elbouhmadi.salim": {
+    "password": "$2a$10$nwBQsEdyPuQSRY1uFXLOEObBXalm5sxFwPOUAq1w4DkhT80YIHhIi",
+    "nom": "EL BOUHMADI",
+    "prenom": "SALIM",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elgharbaoui.hibatallah": {
+    "password": "$2a$10$60.67S90U4h24bozND7ijukLxjdfWNxOIrMPP7veKMSak5mQ0ZFMK",
+    "nom": "EL GHARBAOUI",
+    "prenom": "HIBAT-ALLAH",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elhafi.hasnae": {
+    "password": "$2a$10$GpI6uztwcipEta9aue7Q6uFIdZxqFdTY8RCwo3xmXoeV1VGoAH67u",
+    "nom": "El hafi",
+    "prenom": "Hasnae",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elhaous.youssra": {
+    "password": "$2a$10$JRz2fvfAfqa7JkxX3jpNUebfewjkgJAkpEl6X3lzjyBJL64cSBzk2",
+    "nom": "El Haouss",
+    "prenom": "Youssra",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elharrak.aymane": {
+    "password": "$2a$10$SEP1vR5X8gobFByjd6LdG.WZJcrK/a7VGzP8Nv86upYjc85zXMWt6",
+    "nom": "El harrak",
+    "prenom": "Aymane",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "eljabboury.mouhssine": {
+    "password": "$2a$10$kWKUNdBB8kVUUBT5.T3LFOlGO50BY5.fthg8HWObQ4VTJZTi14hEe",
+    "nom": "El jabboury",
+    "prenom": "Mouhssine",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elkabous.abdelkrim": {
+    "password": "$2a$10$TnerAYJ0lb13ZrLm6Mc0mukkT4nAGcfAcSO0S5sr9ZWqEfqT8bLIi",
+    "nom": "El kabous",
+    "prenom": "Abdelkrim",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elkhaldi.douaa": {
+    "password": "$2a$10$aeSYuyXid4Ailf9hckFHLeSKzoLqoJ1.x6z.I4RqZ.8Mb3UWphNpa",
+    "nom": "el khaldi",
+    "prenom": "Douaa",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elmaalaoui.ayoub": {
+    "password": "$2a$10$E1QZSCmhQodIntO2gy.82u3FeK1a3SDlWmuqk.D3.SggI0H6X5y6G",
+    "nom": "EL MAALAOUI",
+    "prenom": "AYOUB",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elmoudin.aya": {
+    "password": "$2a$10$xov/ARq6BojdX2vdaBw7k.ruO6br6ENIvBnDEI4Oz9FYDJssdu9/C",
+    "nom": "El moudin",
+    "prenom": "Aya",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elogri.yassine": {
+    "password": "$2a$10$PPVrx/WulttPKJJjCLpc5eJRzGngRtqChtZpzrLBJg.PLDtJy4cSO",
+    "nom": "EL OGRI",
+    "prenom": "Yassine",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elomrani.elidrissi.wiam": {
+    "password": "$2a$10$sTLgc7.ZVCD5ye8sUn2MrOZNP2SdmOzPLleliSVeiEgQKghurg7ca",
+    "nom": "El omrani Elidrissi",
+    "prenom": "Wiam",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elouali.ibtissam": {
+    "password": "$2a$10$XxJTT./WwDqArK2.8cbi5.xnznbS11SeBtEZTgwN4HouvstElgEiG",
+    "nom": "EL OUALI",
+    "prenom": "IBTISSAM",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "ennassir.mohammedamine": {
+    "password": "$2a$10$NmGy1j9v8FQ3bTxuCH2uEeKf9.gZ0juWXWk4QhNrYOnHNtzwa.qi2",
+    "nom": "Ennassir",
+    "prenom": "Mohammed amine",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "ezziyani.abderahim": {
+    "password": "$2a$10$1TzyGhrHKMkYx3lBhMMPTOcCAEJxfu4FDvlkaWymHDGtDGBcNGGSG",
+    "nom": "EZ-ZIYANI",
+    "prenom": "abderahim",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "himedi.makrame": {
+    "password": "$2a$10$h0VrZSUJ/8Eck4mHD2dBSeJ74uIMp6h4K5dU2VyaE2ytolDk3di1K",
+    "nom": "Himedi",
+    "prenom": "Makrame",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "houmami.aya": {
+    "password": "$2a$10$m349VSR2qKh3/WDaDh6WM.WcQxMr2SZ1liMW0a4SRJh8nM/MxaR7W",
+    "nom": "Houmami",
+    "prenom": "Aya",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "ighil.oumayma": {
+    "password": "$2a$10$oPMS7OQTUw5m/8WVrAOKierAWoA01p34ccEg8E6sZWKkJ4Ctq0Ui2",
+    "nom": "Ighil",
+    "prenom": "Oumayma",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "khaoudi.redouane": {
+    "password": "$2a$10$NkonUm9bQKBruIjwokgYGOWa695XyfeH6fGM3k5GqKtxWVKPMm9Su",
+    "nom": "Khaoudi",
+    "prenom": "Redouane",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "laabid.mohamed": {
+    "password": "$2a$10$bQ0Uye.d.o4iISdLbrKJseT1crrA1lUgfF1AOczOBAU/1pcpLpugi",
+    "nom": "Laabid",
+    "prenom": "Mohamed",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "lamtahtah.salaheddine": {
+    "password": "$2a$10$dMHwSfE5lF/nxsnaZITU3eGiZzn2fb73xidrXocRCrEj.jjS6ADoO",
+    "nom": "lamtahtah",
+    "prenom": "salaheddine",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "lotfi.fatimaezzahra": {
+    "password": "$2a$10$V1arVQI4oGr1CwPakt3LUuFlie2rHYMmz6SonbFzeALJjMGP2ZEI.",
+    "nom": "Lotfi",
+    "prenom": "Fatima-Ezzahra",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "naciri.ahmed": {
+    "password": "$2a$10$.PPdwsiJBR/pCRHHyOtW6.v3KtHun/C.hErzEzDJ8oN/7hEU7oG7y",
+    "nom": "Naciri",
+    "prenom": "Ahmed",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "noukairi.hind": {
+    "password": "$2a$10$jUnKRhB1QakOIiCybqhPpumg5r.9xb5rpT99qBiILtEsqQ9Nv0dmS",
+    "nom": "Noukairi",
+    "prenom": "Hind",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "ouiss.abdellah": {
+    "password": "$2a$10$rrlNneIM1.56S23W6SE4GuRYE/Jb4QwLNy2cAsWxLZvSxHwHSbd96",
+    "nom": "OUISS",
+    "prenom": "ABDELLAH",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "ouzouggagh.zakaryae": {
+    "password": "$2a$10$uGn4OHJfMyfqU8cXcxWcken1q0xexsYb/3e7OuHd5ypkRGG85kQXa",
+    "nom": "Ouzouggagh",
+    "prenom": "Zakaryae",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "rabah.younes": {
+    "password": "$2a$10$El.LVpc.25VYht92j/Ekd.CPTP/cersryOK6wLo6PoTWd/NpsiBZy",
+    "nom": "RABAH",
+    "prenom": "Younes",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "rhiba.zakaria": {
+    "password": "$2a$10$hffol0jJsoCu2QmqG4vV8Ogc65Jb74ktVrmjKa1Fs30VRCNWZK/Q.",
+    "nom": "Rhiba",
+    "prenom": "Zakaria",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "sadik.imane": {
+    "password": "$2a$10$NPYB8nsdQUMqiwDUx9GpOO.y1g98jMgqazcfCx8XhE/Vy5LY5bua.",
+    "nom": "Sadik",
+    "prenom": "Imane",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "sohbi.salma": {
+    "password": "$2a$10$kKz9fIzptoBQ9nSmo.9Q1eHv/R072SgHozo82FDg2GSDE0qvW6dXm",
+    "nom": "Sohbi",
+    "prenom": "Salma",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "takili.youssef": {
+    "password": "$2a$10$g3mAY9jTGSxTMVRTl7w9F.MXiS8SosSlSp7SyFCq10GyNxYc3fsVy",
+    "nom": "Takili",
+    "prenom": "Youssef",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "haddar.reda": {
+    "password": "$2a$10$eCFoZFh7JPAvTmDSIfIcVeLubbXVNgN4iqUD7EVhsiDMrN.Kzfm3C",
+    "nom": "HADDAR",
+    "prenom": "REDA",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "abali.aya": {
+    "password": "$2a$10$uBJKK.b7cSYQlXipdcphqufFkTTUG8jFpaky7i4vMCwG8KdTVx5zG",
+    "nom": "ABALI",
+    "prenom": "AYA",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "ait.elcadi.hajar": {
+    "password": "$2a$10$1RVrVbcKUmBxaF5zaWsQ5eNZSVSdtwUYZvgx4ggmCGeABcGIZ6pvK",
+    "nom": "AIT ELCADI",
+    "prenom": "HAJAR",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "attak.khadija": {
+    "password": "$2a$10$y5lCLJ3.9eHWOWGIJgGkV.JNLJopYcSl6/n.AZnKzGDsTtT6bw17q",
+    "nom": "ATTAK",
+    "prenom": "KHADIJA",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "bakka.douaa": {
+    "password": "$2a$10$aCS92CAR5mPO.5oAEos97OYLrTPNIGRwxFZCfR1oHjYEjIAiT3LdC",
+    "nom": "BAKKA",
+    "prenom": "DOUAA",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "barchil.mohammed": {
+    "password": "$2a$10$pp6F/PLj6.CX50ObMbwCtuIpLzQn4C8l8Fy7QJURaPv2SyEp7JlvG",
+    "nom": "BARCHIL",
+    "prenom": "MOHAMMED",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "elhalbaoui.asmaa": {
+    "password": "$2a$10$NiwBJgRA1Ev86UZSNPU7tujAbb/VN436TPdREa0G4IZs7y/gY0zUS",
+    "nom": "ELHALBAOUI",
+    "prenom": "ASMAA",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "berrada.mehdi": {
+    "password": "$2a$10$utZHHsTQo.K4rAtoGiC6ue24YF9vkq1BUWEXz/QTxiyFx9iNT87my",
+    "nom": "BERRADA",
+    "prenom": "MEHDI",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "hassouni.ranya": {
+    "password": "$2a$10$SXhTC6MyZ/A8ZNmGmQsxl.y1CUnUQRLAH/BFAl2kDDyrj3zrZa0Gq",
+    "nom": "HASSOUNI",
+    "prenom": "RANYA",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "boufqir.iman": {
+    "password": "$2a$10$C7XHFaMZ1ihPKiEcAjvN6ewe5tI54x7MSebG0Woq3.cfyjkoqVEqm",
+    "nom": "BOUFQIR",
+    "prenom": "IMAN",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "chebel.khadija": {
+    "password": "$2a$10$gEpBDY.9uWshh/l75TXv1ewKT9ajjRODS/vZk1VU5IEhKBji0vTQ2",
+    "nom": "CHEBEL",
+    "prenom": "KHADIJA",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "el.ghamry.mohamed": {
+    "password": "$2a$10$DprDRRsXPzhmwXx1Yi99Uuhbc0hoITT98ipTPqjBPEWHy5bKBjNeO",
+    "nom": "EL GHAMRY",
+    "prenom": "MOHAMED",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "benbella.ghizlane": {
+    "password": "$2a$10$fglYLaHQfDrP83Cq71QVtuF/5wVb1yuZVzp/G9F6MvhdOQNGgOqm2",
+    "nom": "BENBELLA",
+    "prenom": "GHIZLANE",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "kabsi.oumaima": {
+    "password": "$2a$10$/kEe3jN84q55WgRZ5Gp/uuNhsHk5bqu0nyhc1NnXsSsgoN.y9l.Mi",
+    "nom": "KABSI",
+    "prenom": "OUMAIMA",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "moufrad.anass": {
+    "password": "$2a$10$Kce09ZPc.MOn0g4By.AXLuWG67u8bIqxvFokM4G6HgWS4VQX40xLq",
+    "nom": "MOUFRAD",
+    "prenom": "ANASS",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "ouahid.mohamed": {
+    "password": "$2a$10$9PK7ZGKuXoHJSR9hCxVB1.pX6eGmIsRgDcbowKJS7wP5nvQjHU5ja",
+    "nom": "OUAHID",
+    "prenom": "MOHAMED",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "rachid.achraf": {
+    "password": "$2a$10$wfOAKS0bkyYgEEYqCevAFu4wP7zmBVRL9F3m.CLN2Pl2HqcWulHfe",
+    "nom": "RACHID",
+    "prenom": "ACHRAF",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "rahib.amina": {
+    "password": "$2a$10$xEW.BCESHyH/chFA/klE0eQRr1MqJ0Jy8.FbQTKBcjuNA9uDy4LQS",
+    "nom": "RAHIB",
+    "prenom": "AMINA",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "rhbalo.malak": {
+    "password": "$2a$10$0myUNeFS9Dy1IP4fCasyfeVU5JZrvC3fRF57XdZXQaKe55rswvtzC",
+    "nom": "RHBALO",
+    "prenom": "MALAK",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "salam.hiba": {
+    "password": "$2a$10$Ei7zGJ7rHw2/YNe.oLUeau0Qcp6V7rS5huRmGQ/JbcLA3OC1mxUPO",
+    "nom": "SALAM",
+    "prenom": "HIBA",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "sebbrhi.hajar": {
+    "password": "$2a$10$n/9btCTkYYo1jxrI/AuXKuCwyi4vzkZ729kEPOKItcMAbZtqwnNsS",
+    "nom": "SEBBRHI",
+    "prenom": "HAJAR",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "tahari.mayssoune": {
+    "password": "$2a$10$vbMhzvJoUFqrZ0T2tFz2tuFRCAzmLDrpSuVHgpRijQj/Yx.JGMQ1G",
+    "nom": "TAHARI",
+    "prenom": "MAYSSOUNE",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Master"
+  },
+  "admin": {
+    "password": "$2a$10$wiU3bjxGvyrgfXkieY7oEuRkWM/uyUbMLInOVouXjEHg1uWWgDg5K",
+    "nom": "Admin",
+    "prenom": "CADProto",
+    "departement": "Génie Electrique",
+    "filiere": "IDMS",
+    "annee": "Admin"
+  }
+}
