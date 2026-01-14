@@ -556,7 +556,7 @@
         
         async function loadDashboard() {
             try {
-                const res = await fetch('/api/admin/dashboard');
+                const res = await fetch('/api/admin/dashboard', { credentials: 'include' });
                 dashboardData = await res.json();
                 
                 // Charger les identifiants pour l'envoi d'emails
@@ -867,7 +867,7 @@
         
         async function loadCredentials() {
             try {
-                const res = await fetch('/api/admin/credentials');
+                const res = await fetch('/api/admin/credentials', { credentials: 'include' });
                 const data = await res.json();
                 data.forEach(c => {
                     credentialsData[c.login] = c;
