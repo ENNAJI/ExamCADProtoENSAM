@@ -15,10 +15,11 @@ const dataLines = lines.slice(1);
 
 const etudiants = {};
 
-// Déterminer la filière selon le login
-function getFiliere(login) {
-    if (login.includes('IDMS')) return 'IDMS';
-    if (login.includes('IT')) return 'TI';
+// Déterminer la filière selon le mot de passe (contient le code filière)
+function getFiliere(password) {
+    // Les mots de passe IDMS contiennent "25IDMS", les TI contiennent "25IT"
+    if (password.toUpperCase().includes('25IDMS')) return 'IDMS';
+    if (password.toUpperCase().includes('25IT')) return 'TI';
     return 'IDMS'; // Par défaut
 }
 
@@ -31,7 +32,7 @@ dataLines.forEach(line => {
         const password = parts[3].trim();
         
         const hashedPassword = bcrypt.hashSync(password, 10);
-        const filiere = getFiliere(login);
+        const filiere = getFiliere(password);
         
         etudiants[login] = {
             password: hashedPassword,
