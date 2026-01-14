@@ -6,14 +6,42 @@ const { createObjectCsvWriter } = require('csv-writer');
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 
-// Configuration email (Gmail)
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER || '',
-        pass: process.env.EMAIL_PASS || ''
+// Configuration email (SMTP générique - compatible Gmail, Outlook, Office365)
+let transporter;
+if (process.env.EMAIL_USER) {
+    const emailDomain = process.env.EMAIL_USER.split('@')[1];
+    let smtpConfig = {
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+        }
+    };
+    
+    // Configuration selon le domaine
+    if (emailDomain === 'gmail.com') {
+        smtpConfig.service = 'gmail';
+    } else if (emailDomain.includes('outlook') || emailDomain.includes('hotmail')) {
+        smtpConfig.service = 'hotmail';
+    } else if (emailDomain.includes('univh2c') || emailDomain.includes('office365')) {
+        // Office 365 / Compte universitaire
+        smtpConfig.host = 'smtp.office365.com';
+        smtpConfig.port = 587;
+        smtpConfig.secure = false;
+        smtpConfig.tls = { ciphers: 'SSLv3' };
+    } else {
+        // Configuration générique
+        smtpConfig.host = 'smtp.' + emailDomain;
+        smtpConfig.port = 587;
+        smtpConfig.secure = false;
     }
-});
+    
+    transporter = nodemailer.createTransport(smtpConfig);
+} else {
+    transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: { user: '', pass: '' }
+    });
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
