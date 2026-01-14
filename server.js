@@ -6,9 +6,22 @@ const { createObjectCsvWriter } = require('csv-writer');
 const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 
-// Configuration email (SMTP générique - compatible Gmail, Outlook, Office365)
+// Configuration email - Brevo (Sendinblue) SMTP
+// Pour utiliser Brevo: EMAIL_USER = votre login Brevo, EMAIL_PASS = clé SMTP Brevo
 let transporter;
-if (process.env.EMAIL_USER) {
+if (process.env.BREVO_SMTP_KEY) {
+    // Configuration Brevo (Sendinblue)
+    transporter = nodemailer.createTransport({
+        host: 'smtp-relay.brevo.com',
+        port: 587,
+        secure: false,
+        auth: {
+            user: process.env.BREVO_LOGIN || process.env.EMAIL_USER,
+            pass: process.env.BREVO_SMTP_KEY
+        }
+    });
+    console.log('Configuration email: Brevo SMTP');
+} else if (process.env.EMAIL_USER) {
     const emailDomain = process.env.EMAIL_USER.split('@')[1];
     let smtpConfig = {
         auth: {
@@ -22,25 +35,17 @@ if (process.env.EMAIL_USER) {
         smtpConfig.service = 'gmail';
     } else if (emailDomain.includes('outlook') || emailDomain.includes('hotmail')) {
         smtpConfig.service = 'hotmail';
-    } else if (emailDomain.includes('univh2c') || emailDomain.includes('office365')) {
-        // Office 365 / Compte universitaire
-        smtpConfig.host = 'smtp.office365.com';
-        smtpConfig.port = 587;
-        smtpConfig.secure = false;
-        smtpConfig.tls = { ciphers: 'SSLv3' };
     } else {
-        // Configuration générique
         smtpConfig.host = 'smtp.' + emailDomain;
         smtpConfig.port = 587;
         smtpConfig.secure = false;
     }
     
     transporter = nodemailer.createTransport(smtpConfig);
+    console.log('Configuration email: ' + emailDomain);
 } else {
-    transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: { user: '', pass: '' }
-    });
+    transporter = null;
+    console.log('Configuration email: Non configuré');
 }
 
 const app = express();
@@ -687,9 +692,9 @@ app.post('/api/admin/send-email', async (req, res) => {
     }
     
     // Vérifier si les credentials email sont configurés
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    if (!transporter) {
         return res.status(400).json({ 
-            error: 'Configuration email manquante. Configurez EMAIL_USER et EMAIL_PASS dans les variables d environnement.',
+            error: 'Configuration email manquante. Configurez BREVO_SMTP_KEY ou EMAIL_USER/EMAIL_PASS.',
             useMailto: true,
             mailto: {
                 email: email,
@@ -838,9 +843,9 @@ app.post('/api/admin/send-all-emails', async (req, res) => {
     }
     
     // Vérifier si les credentials email sont configurés
-    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    if (!transporter) {
         return res.status(400).json({ 
-            error: 'Configuration email manquante. Configurez EMAIL_USER et EMAIL_PASS dans les variables d environnement.'
+            error: 'Configuration email manquante. Configurez BREVO_SMTP_KEY ou EMAIL_USER/EMAIL_PASS.'
         });
     }
     
