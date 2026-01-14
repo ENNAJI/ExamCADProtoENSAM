@@ -582,6 +582,36 @@ app.get('/api/admin/export-csv', (req, res) => {
     }
 });
 
+// API Admin - Obtenir les identifiants des étudiants (pour envoi email)
+app.get('/api/admin/credentials', (req, res) => {
+    if (!isAdmin(req)) {
+        return res.status(403).json({ error: 'Accès refusé' });
+    }
+    
+    const credentials = [];
+    const csvPath = path.join(__dirname, 'data', 'etudiants_import.csv');
+    
+    if (fs.existsSync(csvPath)) {
+        const csvContent = fs.readFileSync(csvPath, 'utf8');
+        const lines = csvContent.trim().split('\n');
+        
+        // Ignorer l'en-tête
+        for (let i = 1; i < lines.length; i++) {
+            const parts = lines[i].split(',');
+            if (parts.length >= 4) {
+                credentials.push({
+                    nom: parts[0].trim(),
+                    prenom: parts[1].trim(),
+                    login: parts[2].trim(),
+                    password: parts[3].trim()
+                });
+            }
+        }
+    }
+    
+    res.json(credentials);
+});
+
 // Route principale
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));

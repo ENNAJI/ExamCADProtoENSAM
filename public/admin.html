@@ -428,6 +428,7 @@
                                 <th>Année</th>
                                 <th>Progression</th>
                                 <th>Examens</th>
+                                <th>Email</th>
                             </tr>
                         </thead>
                         <tbody id="etudiantsBody">
@@ -551,6 +552,9 @@
                 const res = await fetch('/api/admin/dashboard');
                 dashboardData = await res.json();
                 
+                // Charger les identifiants pour l'envoi d'emails
+                await loadCredentials();
+                
                 renderStats();
                 renderEtudiants();
                 renderMatieres();
@@ -625,6 +629,7 @@
                     <td>${etudiant.annee}</td>
                     <td class="${progressClass}">${etudiant.progression}% (${etudiant.examensPassés}/${etudiant.totalExamens})</td>
                     <td>${examensHtml}</td>
+                    <td><button class="btn" style="padding: 5px 10px; background: #9b59b6; color: white; font-size: 11px;" onclick="envoyerEmail('${etudiant.login}')">📧 Email</button></td>
                 `;
                 
                 tbody.appendChild(tr);
@@ -846,6 +851,65 @@
         
         function exportCSV() {
             window.location.href = '/api/admin/export-csv';
+        }
+        
+        let credentialsData = {};
+        
+        async function loadCredentials() {
+            try {
+                const res = await fetch('/api/admin/credentials');
+                const data = await res.json();
+                data.forEach(c => {
+                    credentialsData[c.login] = c;
+                });
+            } catch (e) {
+                console.error('Erreur chargement credentials:', e);
+            }
+        }
+        
+        function envoyerEmail(login) {
+            const cred = credentialsData[login];
+            if (!cred) {
+                alert('Identifiants non trouvés pour cet étudiant');
+                return;
+            }
+            
+            const subject = encodeURIComponent('Convocation Examen Conception et Prototypage - ENSAM Casablanca');
+            const body = encodeURIComponent(`Cher(e) ${cred.nom} ${cred.prenom},
+
+Vous êtes invité(e) à passer votre examen en ligne sur la plateforme d'examens de l'ENSAM Casablanca.
+
+🔗 Lien de la plateforme :
+https://examcadprotoensam.onrender.com/
+
+🔐 Vos identifiants de connexion :
+- Login : ${cred.login}
+- Mot de passe : ${cred.password}
+
+📋 Instructions :
+1. Accédez à la plateforme via le lien ci-dessus
+2. Connectez-vous avec vos identifiants personnels
+3. Sélectionnez l'examen à passer
+4. L'examen contient 20 questions et dure 30 minutes
+5. Votre note sera affichée immédiatement après la soumission
+
+⚠️ Important :
+- Vous n'avez droit qu'à une seule tentative par examen
+- Une fois commencé, le chronomètre ne peut pas être arrêté
+- Assurez-vous d'avoir une connexion internet stable
+- Ne fermez pas votre navigateur pendant l'examen
+
+📅 DATE LIMITE DE PASSAGE :
+🔴 Jeudi 16 Janvier 2026 à MINUIT (00h00)
+Aucune soumission ne sera acceptée après cette date.
+
+
+Pour toute question technique, veuillez contacter votre responsable de filière.
+
+Bonne chance !`);
+            
+            // Ouvrir le client email avec le message pré-rempli
+            window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
         }
         
         async function logout() {
