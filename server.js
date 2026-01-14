@@ -579,16 +579,23 @@ app.get('/api/admin/resultats', (req, res) => {
 });
 
 // API Admin - Exporter les résultats en CSV
-app.get('/api/admin/export-csv', (req, res) => {
+app.get('/api/admin/export-csv', async (req, res) => {
     if (!isAdmin(req)) {
         return res.status(403).json({ error: 'Accès refusé' });
     }
     
     const csvPath = path.join(__dirname, 'data', 'resultats.csv');
+    
+    // Si le fichier existe, le télécharger
     if (fs.existsSync(csvPath)) {
         res.download(csvPath, 'resultats_examens.csv');
     } else {
-        res.status(404).json({ error: 'Aucun résultat disponible' });
+        // Sinon, générer un CSV vide avec les en-têtes
+        const csvContent = 'Departement,Filiere,Annee,Matiere,Login,Nom,Prenom,Date,Score,Total,Note,Reponses,Temps_Depasse\n';
+        
+        // Créer le fichier
+        fs.writeFileSync(csvPath, csvContent);
+        res.download(csvPath, 'resultats_examens.csv');
     }
 });
 
