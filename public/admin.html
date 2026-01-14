@@ -402,6 +402,13 @@
             <div id="tabEtudiants" class="section">
                 <h2>Liste des Étudiants</h2>
                 
+                <div style="margin-bottom: 15px;">
+                    <button class="btn" style="background: #e74c3c; padding: 10px 20px; font-size: 14px;" onclick="envoyerTousLesEmails()">
+                        📧 Envoyer les emails à TOUS les étudiants
+                    </button>
+                    <span id="emailProgress" style="margin-left: 15px; font-weight: bold;"></span>
+                </div>
+                
                 <div class="filters">
                     <input type="text" id="searchInput" placeholder="Rechercher un étudiant..." oninput="filterTable()">
                     <select id="filterFiliere" onchange="filterTable()">
@@ -962,6 +969,44 @@ Bonne chance !`);
                 alert('Erreur de connexion au serveur');
                 btn.innerHTML = originalText;
                 btn.disabled = false;
+            }
+        }
+        
+        async function envoyerTousLesEmails() {
+            if (!confirm('⚠️ Êtes-vous sûr de vouloir envoyer les emails à TOUS les étudiants (61 emails) ?\n\nCette action peut prendre plusieurs minutes.')) {
+                return;
+            }
+            
+            const progressSpan = document.getElementById('emailProgress');
+            progressSpan.innerHTML = '⏳ Envoi en cours...';
+            progressSpan.style.color = '#f39c12';
+            
+            try {
+                const res = await fetch('/api/admin/send-all-emails', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                const data = await res.json();
+                
+                if (data.success) {
+                    progressSpan.innerHTML = `✅ ${data.sent} emails envoyés, ${data.failed} échecs`;
+                    progressSpan.style.color = data.failed > 0 ? '#e74c3c' : '#27ae60';
+                    
+                    if (data.errors && data.errors.length > 0) {
+                        alert('Envoi terminé avec des erreurs:\n\n' + data.errors.join('\n'));
+                    } else {
+                        alert('✅ Tous les emails ont été envoyés avec succès !');
+                    }
+                } else {
+                    progressSpan.innerHTML = '❌ Erreur';
+                    progressSpan.style.color = '#e74c3c';
+                    alert('Erreur: ' + (data.error || 'Erreur inconnue'));
+                }
+            } catch (e) {
+                progressSpan.innerHTML = '❌ Erreur de connexion';
+                progressSpan.style.color = '#e74c3c';
+                alert('Erreur de connexion au serveur');
             }
         }
         

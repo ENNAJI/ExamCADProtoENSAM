@@ -715,6 +715,125 @@ app.post('/api/admin/send-email', async (req, res) => {
     }
 });
 
+// API Admin - Envoyer les emails à tous les étudiants
+app.post('/api/admin/send-all-emails', async (req, res) => {
+    if (!isAdmin(req)) {
+        return res.status(403).json({ error: 'Accès refusé' });
+    }
+    
+    // Vérifier si les credentials email sont configurés
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+        return res.status(400).json({ 
+            error: 'Configuration email manquante. Configurez EMAIL_USER et EMAIL_PASS dans les variables d environnement.'
+        });
+    }
+    
+    // Charger les credentials depuis le CSV
+    const credentials = [];
+    const csvPath = path.join(__dirname, 'data', 'etudiants_import.csv');
+    
+    if (fs.existsSync(csvPath)) {
+        const csvContent = fs.readFileSync(csvPath, 'utf8');
+        const lines = csvContent.trim().split('\n');
+        
+        for (let i = 1; i < lines.length; i++) {
+            const parts = lines[i].split(',');
+            if (parts.length >= 5) {
+                credentials.push({
+                    nom: parts[0].trim(),
+                    prenom: parts[1].trim(),
+                    login: parts[2].trim(),
+                    password: parts[3].trim(),
+                    email: parts[4].trim()
+                });
+            }
+        }
+    }
+    
+    if (credentials.length === 0) {
+        return res.status(400).json({ error: 'Aucun étudiant trouvé' });
+    }
+    
+    let sent = 0;
+    let failed = 0;
+    const errors = [];
+    
+    for (const cred of credentials) {
+        if (!cred.email) {
+            failed++;
+            errors.push(`${cred.nom} ${cred.prenom}: Email manquant`);
+            continue;
+        }
+        
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: cred.email,
+            subject: 'Convocation Examen Conception et Prototypage - ENSAM Casablanca',
+            html: `
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h2 style="color: #2c3e50;">Cher(e) ${cred.nom} ${cred.prenom},</h2>
+                    
+                    <p>Vous êtes invité(e) à passer votre examen en ligne sur la plateforme d'examens de l'ENSAM Casablanca.</p>
+                    
+                    <h3 style="color: #3498db;">🔗 Lien de la plateforme :</h3>
+                    <p><a href="https://examcadprotoensam.onrender.com/" style="color: #3498db; font-size: 18px;">https://examcadprotoensam.onrender.com/</a></p>
+                    
+                    <h3 style="color: #3498db;">🔐 Vos identifiants de connexion :</h3>
+                    <ul>
+                        <li><strong>Login :</strong> ${cred.login}</li>
+                        <li><strong>Mot de passe :</strong> ${cred.password}</li>
+                    </ul>
+                    
+                    <h3 style="color: #3498db;">📋 Instructions :</h3>
+                    <ol>
+                        <li>Accédez à la plateforme via le lien ci-dessus</li>
+                        <li>Connectez-vous avec vos identifiants personnels</li>
+                        <li>Sélectionnez l'examen à passer</li>
+                        <li>L'examen contient 20 questions et dure 30 minutes</li>
+                        <li>Votre note sera affichée immédiatement après la soumission</li>
+                    </ol>
+                    
+                    <h3 style="color: #e74c3c;">⚠️ Important :</h3>
+                    <ul>
+                        <li>Vous n'avez droit qu'à une seule tentative par examen</li>
+                        <li>Une fois commencé, le chronomètre ne peut pas être arrêté</li>
+                        <li>Assurez-vous d'avoir une connexion internet stable</li>
+                        <li>Ne fermez pas votre navigateur pendant l'examen</li>
+                    </ul>
+                    
+                    <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                        <h3 style="margin: 0;">📅 DATE LIMITE DE PASSAGE :</h3>
+                        <p style="font-size: 18px; margin: 10px 0;"><strong>Jeudi 16 Janvier 2026 à MINUIT (00h00)</strong></p>
+                        <p style="margin: 0;">Aucune soumission ne sera acceptée après cette date.</p>
+                    </div>
+                    
+                    <p>Pour toute question technique, veuillez contacter votre responsable de filière.</p>
+                    
+                    <p style="color: #27ae60; font-size: 18px;"><strong>Bonne chance !</strong></p>
+                </div>
+            `
+        };
+        
+        try {
+            await transporter.sendMail(mailOptions);
+            sent++;
+            // Petite pause pour éviter le rate limiting
+            await new Promise(resolve => setTimeout(resolve, 500));
+        } catch (error) {
+            failed++;
+            errors.push(`${cred.nom} ${cred.prenom} (${cred.email}): ${error.message}`);
+        }
+    }
+    
+    res.json({ 
+        success: true, 
+        message: `Envoi terminé: ${sent} emails envoyés, ${failed} échecs`,
+        sent: sent,
+        failed: failed,
+        errors: errors
+    });
+});
+
 // Route principale
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
