@@ -867,49 +867,59 @@
             }
         }
         
-        function envoyerEmail(login) {
+        async function envoyerEmail(login) {
             const cred = credentialsData[login];
             if (!cred) {
                 alert('Identifiants non trouvés pour cet étudiant');
                 return;
             }
             
-            const subject = encodeURIComponent('Convocation Examen Conception et Prototypage - ENSAM Casablanca');
-            const body = encodeURIComponent(`Cher(e) ${cred.nom} ${cred.prenom},
-
-Vous êtes invité(e) à passer votre examen en ligne sur la plateforme d'examens de l'ENSAM Casablanca.
-
-🔗 Lien de la plateforme :
-https://examcadprotoensam.onrender.com/
-
-🔐 Vos identifiants de connexion :
-- Login : ${cred.login}
-- Mot de passe : ${cred.password}
-
-📋 Instructions :
-1. Accédez à la plateforme via le lien ci-dessus
-2. Connectez-vous avec vos identifiants personnels
-3. Sélectionnez l'examen à passer
-4. L'examen contient 20 questions et dure 30 minutes
-5. Votre note sera affichée immédiatement après la soumission
-
-⚠️ Important :
-- Vous n'avez droit qu'à une seule tentative par examen
-- Une fois commencé, le chronomètre ne peut pas être arrêté
-- Assurez-vous d'avoir une connexion internet stable
-- Ne fermez pas votre navigateur pendant l'examen
-
-📅 DATE LIMITE DE PASSAGE :
-🔴 Jeudi 16 Janvier 2026 à MINUIT (00h00)
-Aucune soumission ne sera acceptée après cette date.
-
-
-Pour toute question technique, veuillez contacter votre responsable de filière.
-
-Bonne chance !`);
+            // Demander l'adresse email
+            const email = prompt(`Entrez l'adresse email de ${cred.nom} ${cred.prenom}:`, `${login}@etu.ensam-casa.ma`);
             
-            // Ouvrir le client email avec le message pré-rempli
-            window.open(`mailto:?subject=${subject}&body=${body}`, '_blank');
+            if (!email) {
+                return; // Annulé
+            }
+            
+            // Afficher un message de chargement
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '⏳...';
+            btn.disabled = true;
+            
+            try {
+                const res = await fetch('/api/admin/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: email,
+                        nom: cred.nom,
+                        prenom: cred.prenom,
+                        login: cred.login,
+                        password: cred.password
+                    })
+                });
+                
+                const data = await res.json();
+                
+                if (data.success) {
+                    btn.innerHTML = '✅ Envoyé';
+                    btn.style.background = '#27ae60';
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.style.background = '#9b59b6';
+                        btn.disabled = false;
+                    }, 3000);
+                } else {
+                    alert('Erreur: ' + (data.error || 'Erreur inconnue'));
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            } catch (e) {
+                alert('Erreur de connexion au serveur');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
         }
         
         async function logout() {
