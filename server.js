@@ -523,6 +523,65 @@ app.get('/api/admin/etudiant/:login', (req, res) => {
     }
 });
 
+// API Admin - Obtenir tous les résultats d'examens
+app.get('/api/admin/resultats', (req, res) => {
+    if (!isAdmin(req)) {
+        return res.status(403).json({ error: 'Accès refusé' });
+    }
+    
+    const resultats = [];
+    const resultatsDir = path.join(__dirname, 'data', 'resultats');
+    
+    // Lire tous les fichiers de résultats
+    if (fs.existsSync(resultatsDir)) {
+        const files = fs.readdirSync(resultatsDir);
+        files.forEach(file => {
+            if (file.endsWith('.json')) {
+                try {
+                    const data = JSON.parse(fs.readFileSync(path.join(resultatsDir, file), 'utf8'));
+                    if (data.examens && data.examens.length > 0) {
+                        data.examens.forEach(exam => {
+                            resultats.push({
+                                login: data.etudiant ? data.etudiant.login : file.replace('.json', ''),
+                                nom: data.etudiant ? data.etudiant.nom : '',
+                                prenom: data.etudiant ? data.etudiant.prenom : '',
+                                filiere: data.etudiant ? data.etudiant.filiere : '',
+                                matiere: exam.matiere,
+                                date: exam.date,
+                                score: exam.score,
+                                total: exam.total,
+                                note: exam.note,
+                                reponses: exam.reponses || {}
+                            });
+                        });
+                    }
+                } catch (e) {
+                    console.error('Erreur lecture fichier:', file, e);
+                }
+            }
+        });
+    }
+    
+    // Trier par date décroissante
+    resultats.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    res.json(resultats);
+});
+
+// API Admin - Exporter les résultats en CSV
+app.get('/api/admin/export-csv', (req, res) => {
+    if (!isAdmin(req)) {
+        return res.status(403).json({ error: 'Accès refusé' });
+    }
+    
+    const csvPath = path.join(__dirname, 'data', 'resultats.csv');
+    if (fs.existsSync(csvPath)) {
+        res.download(csvPath, 'resultats_examens.csv');
+    } else {
+        res.status(404).json({ error: 'Aucun résultat disponible' });
+    }
+});
+
 // Route principale
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));

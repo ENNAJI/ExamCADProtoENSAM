@@ -392,8 +392,10 @@
             <!-- Tabs -->
             <div class="tabs">
                 <button class="tab active" onclick="showTab('etudiants')">Étudiants</button>
+                <button class="tab" onclick="showTab('resultats')">Résultats</button>
                 <button class="tab" onclick="showTab('matieres')">Par Matière</button>
                 <button class="tab" onclick="showTab('filieres')">Par Filière</button>
+                <button class="btn" style="margin-left: auto; background: #27ae60; color: white;" onclick="exportCSV()">📥 Exporter CSV</button>
             </div>
             
             <!-- Tab: Étudiants -->
@@ -429,6 +431,34 @@
                             </tr>
                         </thead>
                         <tbody id="etudiantsBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Tab: Résultats -->
+            <div id="tabResultats" class="section hidden">
+                <h2>Résultats des Examens</h2>
+                <div class="filters">
+                    <input type="text" id="searchResultat" placeholder="Rechercher..." oninput="filterResultats()">
+                    <select id="filterFiliereResultat" onchange="filterResultats()">
+                        <option value="">Toutes les filières</option>
+                    </select>
+                </div>
+                <div class="table-container" style="max-height: 600px; overflow-y: auto;">
+                    <table id="resultatsTable">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Étudiant</th>
+                                <th>Filière</th>
+                                <th>Matière</th>
+                                <th>Score</th>
+                                <th>Note</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="resultatsBody">
                         </tbody>
                     </table>
                 </div>
@@ -683,6 +713,7 @@
         function showTab(tabName) {
             // Masquer tous les onglets
             document.getElementById('tabEtudiants').classList.add('hidden');
+            document.getElementById('tabResultats').classList.add('hidden');
             document.getElementById('tabMatieres').classList.add('hidden');
             document.getElementById('tabFilieres').classList.add('hidden');
             
@@ -693,13 +724,128 @@
             if (tabName === 'etudiants') {
                 document.getElementById('tabEtudiants').classList.remove('hidden');
                 document.querySelectorAll('.tab')[0].classList.add('active');
+            } else if (tabName === 'resultats') {
+                document.getElementById('tabResultats').classList.remove('hidden');
+                document.querySelectorAll('.tab')[1].classList.add('active');
+                loadResultats();
             } else if (tabName === 'matieres') {
                 document.getElementById('tabMatieres').classList.remove('hidden');
-                document.querySelectorAll('.tab')[1].classList.add('active');
+                document.querySelectorAll('.tab')[2].classList.add('active');
             } else if (tabName === 'filieres') {
                 document.getElementById('tabFilieres').classList.remove('hidden');
-                document.querySelectorAll('.tab')[2].classList.add('active');
+                document.querySelectorAll('.tab')[3].classList.add('active');
             }
+        }
+        
+        let resultatsData = [];
+        
+        async function loadResultats() {
+            try {
+                const res = await fetch('/api/admin/resultats');
+                resultatsData = await res.json();
+                renderResultats();
+                populateResultatsFilters();
+            } catch (e) {
+                console.error('Erreur chargement résultats:', e);
+            }
+        }
+        
+        function renderResultats() {
+            const tbody = document.getElementById('resultatsBody');
+            tbody.innerHTML = '';
+            
+            if (resultatsData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: #aaa;">Aucun résultat disponible</td></tr>';
+                return;
+            }
+            
+            resultatsData.forEach(r => {
+                const tr = document.createElement('tr');
+                tr.dataset.nom = (r.nom || '').toLowerCase();
+                tr.dataset.prenom = (r.prenom || '').toLowerCase();
+                tr.dataset.filiere = r.filiere || '';
+                
+                const date = new Date(r.date).toLocaleString('fr-FR');
+                const noteClass = r.note >= 14 ? 'note-excellent' : (r.note >= 10 ? 'note-good' : 'note-poor');
+                
+                tr.innerHTML = `
+                    <td>${date}</td>
+                    <td><strong>${r.nom}</strong> ${r.prenom}</td>
+                    <td><span class="badge badge-info">${r.filiere}</span></td>
+                    <td>${r.matiere}</td>
+                    <td>${r.score}/${r.total}</td>
+                    <td class="${noteClass}"><strong>${r.note}/20</strong></td>
+                    <td><button class="btn" style="padding: 5px 10px; background: #3498db; color: white; font-size: 12px;" onclick="voirDetails('${r.login}')">Détails</button></td>
+                `;
+                
+                tbody.appendChild(tr);
+            });
+        }
+        
+        function populateResultatsFilters() {
+            const filieres = new Set();
+            resultatsData.forEach(r => {
+                if (r.filiere) filieres.add(r.filiere);
+            });
+            
+            const filterFiliere = document.getElementById('filterFiliereResultat');
+            filterFiliere.innerHTML = '<option value="">Toutes les filières</option>';
+            filieres.forEach(f => {
+                filterFiliere.innerHTML += `<option value="${f}">${f}</option>`;
+            });
+        }
+        
+        function filterResultats() {
+            const search = document.getElementById('searchResultat').value.toLowerCase();
+            const filiere = document.getElementById('filterFiliereResultat').value;
+            
+            const rows = document.querySelectorAll('#resultatsBody tr');
+            
+            rows.forEach(row => {
+                if (!row.dataset.nom) return;
+                const matchSearch = row.dataset.nom.includes(search) || row.dataset.prenom.includes(search);
+                const matchFiliere = !filiere || row.dataset.filiere === filiere;
+                
+                row.style.display = (matchSearch && matchFiliere) ? '' : 'none';
+            });
+        }
+        
+        async function voirDetails(login) {
+            try {
+                const res = await fetch(`/api/admin/etudiant/${login}`);
+                const data = await res.json();
+                
+                let html = `<h3>Étudiant: ${data.etudiant?.nom || ''} ${data.etudiant?.prenom || ''}</h3>`;
+                html += `<p>Filière: ${data.etudiant?.filiere || ''} - ${data.etudiant?.annee || ''}</p><hr>`;
+                
+                if (data.examens && data.examens.length > 0) {
+                    data.examens.forEach(exam => {
+                        html += `<h4>${exam.matiere} - Note: ${exam.note}/20</h4>`;
+                        html += `<p>Date: ${new Date(exam.date).toLocaleString('fr-FR')}</p>`;
+                        html += `<p>Score: ${exam.score}/${exam.total}</p>`;
+                        if (exam.corrections && exam.corrections.length > 0) {
+                            html += '<table style="width:100%; margin: 10px 0; font-size: 12px;">';
+                            html += '<tr><th>Q</th><th>Réponse</th><th>Correct</th></tr>';
+                            exam.corrections.forEach(c => {
+                                const icon = c.correct ? '✅' : '❌';
+                                html += `<tr><td>${c.numero}</td><td>${c.reponseEtudiant || '-'}</td><td>${icon}</td></tr>`;
+                            });
+                            html += '</table>';
+                        }
+                        html += '<hr>';
+                    });
+                } else {
+                    html += '<p>Aucun examen passé</p>';
+                }
+                
+                alert(html.replace(/<[^>]*>/g, '\n').substring(0, 2000));
+            } catch (e) {
+                console.error('Erreur:', e);
+            }
+        }
+        
+        function exportCSV() {
+            window.location.href = '/api/admin/export-csv';
         }
         
         async function logout() {
