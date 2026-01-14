@@ -1,36 +1,31 @@
-# Plateforme d'Examens en Ligne - ENSAM Casablanca
+# Examen Conception et Prototypage - ENSAM Casablanca
 
 ## Description
-Application web permettant aux étudiants de passer des examens en ligne avec :
-- Authentification par login/mot de passe
-- Sélection automatique des matières selon la filière de l'étudiant
-- Génération aléatoire de 20 questions par examen
-- Chronométrage (30 minutes par examen)
-- Correction automatique et affichage de la note
+Plateforme d'examen en ligne pour le module **Conception et Prototypage** destinée aux étudiants des Masters IDMS et TI de l'ENSAM Casablanca.
+
+### Fonctionnalités
+- Authentification sécurisée par login/mot de passe
+- Examen de 20 questions (QCM, Vrai/Faux, Rédaction)
+- Chronométrage de 30 minutes par examen
+- Correction automatique et affichage immédiat de la note
+- Tableau de bord administrateur pour suivre les résultats
 - Export des résultats en CSV
 - Restriction : un seul passage par examen par étudiant
 
 ## Structure des Filières
 
 ```
-Génie Mécanique
-├── GMAA
-│   ├── 1ère Année
-│   │   ├── Ingénierie des Systèmes
-│   │   └── Schématisation & Conception des Systèmes et EDA
-│   └── 2ème Année
-│       ├── Digital Twins et Technologies Immersives
-│       └── Industrie 4.0 et Internet des Objets
-└── GSMI
-    └── 3ème Année
-        ├── Avioniques et Systèmes Aéronautiques
-        └── Maquette Numérique Prototypage
-
 Génie Electrique
-└── GEM
-    └── 3ème Année
-        └── Maquette Numérique Prototypage
+├── IDMS (Master)
+│   └── Conception et Prototypage
+└── TI (Master)
+    └── Conception et Prototypage
 ```
+
+## Étudiants
+- **61 étudiants** répartis en 2 filières :
+  - 40 étudiants IDMS
+  - 21 étudiants TI
 
 ## Installation
 
@@ -41,7 +36,7 @@ Génie Electrique
 ### Installation locale
 
 ```bash
-cd serveur_examen
+cd serveur_examen_CADProto
 npm install
 ```
 
@@ -102,28 +97,24 @@ Le serveur démarre sur `http://localhost:3000`
 ## Structure des fichiers
 
 ```
-serveur_examen/
+serveur_examen_CADProto/
 ├── server.js                 # Serveur Express principal
 ├── package.json              # Dépendances npm
 ├── public/                   # Fichiers statiques
-│   ├── index.html           # Page principale
+│   ├── index.html           # Page principale (étudiants)
+│   ├── admin.html           # Page administration
 │   ├── styles.css           # Styles CSS
 │   └── app.js               # JavaScript client
 ├── data/
-│   ├── etudiants.json       # Base des étudiants
+│   ├── etudiants.json       # Base des 62 utilisateurs
 │   ├── examens_passes.json  # Suivi des examens passés
 │   ├── resultats.csv        # Export des résultats
-│   └── questions/           # Banques de questions
-│       ├── ingenierie_systemes.json
-│       ├── schematisation_conception_eda.json
-│       ├── digital_twins.json
-│       ├── industrie_4_0.json
-│       ├── avioniques.json
-│       └── maquette_numerique.json
+│   ├── resultats/           # Résultats détaillés par étudiant
+│   └── questions/           # Banque de questions
+│       └── questions_conception_prototypage.json (100 questions)
 └── scripts/
-    ├── create_users.js      # Script création utilisateurs
-    ├── import_students_csv.js # Import depuis CSV
-    └── etudiants_template.csv # Template CSV
+    ├── import_masters.js    # Script import étudiants Masters
+    └── etudiants_import.csv # Liste des étudiants
 ```
 
 ## Format des questions
@@ -183,11 +174,28 @@ Le fichier `data/resultats.csv` contient :
 - Sessions sécurisées avec express-session
 - Un étudiant ne peut passer qu'une seule fois chaque examen
 
+## Accès
+
+### Page Étudiants
+- URL : `/`
+- Connexion avec login/mot de passe fourni
+
+### Page Administration
+- URL : `/admin`
+- Login : `admin`
+- Mot de passe : `Admin2026`
+
+## Fonctionnalités Admin
+- Visualisation de tous les étudiants et leur progression
+- Onglet "Résultats" avec liste de tous les examens passés
+- Statistiques par matière et par filière
+- Export CSV des résultats
+- Détails des réponses de chaque étudiant
+
+## Déploiement
+
+Déployé sur Render.com : https://examcadprotoensam.onrender.com
+
 ## Support
 
-Pour ajouter de nouvelles questions, modifiez les fichiers JSON dans `data/questions/`.
-
-Pour ajouter une nouvelle matière :
-1. Créez le fichier JSON de questions dans `data/questions/`
-2. Ajoutez le mapping dans `server.js` (variable `matiereToFile`)
-3. Ajoutez la matière dans la structure des filières si nécessaire
+Pour toute question, contactez l'administrateur de la plateforme.
