@@ -36,6 +36,7 @@ app.use(session({
 let etudiants = {};
 let questionsDB = {};
 let examensPassés = {};
+let emailsEnvoyes = {};
 
 // Charger les étudiants
 function chargerEtudiants() {
@@ -43,6 +44,20 @@ function chargerEtudiants() {
     if (fs.existsSync(etudiantsPath)) {
         etudiants = JSON.parse(fs.readFileSync(etudiantsPath, 'utf8'));
     }
+}
+
+// Charger les emails envoyés
+function chargerEmailsEnvoyes() {
+    const emailsPath = path.join(__dirname, 'data', 'emails_envoyes.json');
+    if (fs.existsSync(emailsPath)) {
+        emailsEnvoyes = JSON.parse(fs.readFileSync(emailsPath, 'utf8'));
+    }
+}
+
+// Sauvegarder les emails envoyés
+function sauvegarderEmailsEnvoyes() {
+    const emailsPath = path.join(__dirname, 'data', 'emails_envoyes.json');
+    fs.writeFileSync(emailsPath, JSON.stringify(emailsEnvoyes, null, 2));
 }
 
 // Charger les questions
@@ -97,6 +112,7 @@ const matiereToFile = {
 // Initialisation
 chargerEtudiants();
 chargerQuestions();
+chargerEmailsEnvoyes();
 chargerExamensPassés();
 
 // Routes API
@@ -708,11 +724,25 @@ app.post('/api/admin/send-email', async (req, res) => {
     
     try {
         await transporter.sendMail(mailOptions);
+        // Enregistrer l'envoi
+        emailsEnvoyes[login] = {
+            date: new Date().toISOString(),
+            email: email
+        };
+        sauvegarderEmailsEnvoyes();
         res.json({ success: true, message: 'Email envoyé avec succès' });
     } catch (error) {
         console.error('Erreur envoi email:', error);
         res.status(500).json({ error: 'Erreur lors de l envoi de l email: ' + error.message });
     }
+});
+
+// API Admin - Obtenir la liste des emails envoyés
+app.get('/api/admin/emails-envoyes', (req, res) => {
+    if (!isAdmin(req)) {
+        return res.status(403).json({ error: 'Accès refusé' });
+    }
+    res.json(emailsEnvoyes);
 });
 
 // API Admin - Modifier les informations d'un étudiant
@@ -875,6 +905,11 @@ app.post('/api/admin/send-all-emails', async (req, res) => {
         try {
             await transporter.sendMail(mailOptions);
             sent++;
+            // Enregistrer l'envoi
+            emailsEnvoyes[cred.login] = {
+                date: new Date().toISOString(),
+                email: cred.email
+            };
             // Petite pause pour éviter le rate limiting
             await new Promise(resolve => setTimeout(resolve, 500));
         } catch (error) {
@@ -882,6 +917,9 @@ app.post('/api/admin/send-all-emails', async (req, res) => {
             errors.push(`${cred.nom} ${cred.prenom} (${cred.email}): ${error.message}`);
         }
     }
+    
+    // Sauvegarder tous les emails envoyés
+    sauvegarderEmailsEnvoyes();
     
     res.json({ 
         success: true, 

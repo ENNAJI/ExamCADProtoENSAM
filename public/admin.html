@@ -561,6 +561,7 @@
                 
                 // Charger les identifiants pour l'envoi d'emails
                 await loadCredentials();
+                await loadEmailsEnvoyes();
                 
                 renderStats();
                 renderEtudiants();
@@ -638,7 +639,8 @@
                     <td>${examensHtml}</td>
                     <td>
                         <button class="btn" style="padding: 5px 8px; background: #3498db; color: white; font-size: 11px; margin-right: 5px;" onclick="modifierEtudiant('${etudiant.login}')">✏️ Modifier</button>
-                        <button class="btn" style="padding: 5px 8px; background: #9b59b6; color: white; font-size: 11px;" onclick="envoyerEmail('${etudiant.login}')">📧 Email</button>
+                        ${emailsEnvoyesData[etudiant.login] ? '<span style="color: #27ae60; font-size: 16px; margin-right: 5px;" title="Email envoyé le ' + new Date(emailsEnvoyesData[etudiant.login].date).toLocaleString() + '">✅</span>' : ''}
+                        <button class="btn" style="padding: 5px 8px; background: ${emailsEnvoyesData[etudiant.login] ? '#95a5a6' : '#9b59b6'}; color: white; font-size: 11px;" onclick="envoyerEmail('${etudiant.login}')">${emailsEnvoyesData[etudiant.login] ? '🔄 Renvoyer' : '📧 Email'}</button>
                     </td>
                 `;
                 
@@ -864,6 +866,7 @@
         }
         
         let credentialsData = {};
+        let emailsEnvoyesData = {};
         
         async function loadCredentials() {
             try {
@@ -874,6 +877,15 @@
                 });
             } catch (e) {
                 console.error('Erreur chargement credentials:', e);
+            }
+        }
+        
+        async function loadEmailsEnvoyes() {
+            try {
+                const res = await fetch('/api/admin/emails-envoyes', { credentials: 'include' });
+                emailsEnvoyesData = await res.json();
+            } catch (e) {
+                console.error('Erreur chargement emails envoyés:', e);
             }
         }
         
@@ -966,13 +978,11 @@
                 const data = await res.json();
                 
                 if (data.success) {
-                    btn.innerHTML = '✅ Envoyé';
-                    btn.style.background = '#27ae60';
-                    setTimeout(() => {
-                        btn.innerHTML = originalText;
-                        btn.style.background = '#9b59b6';
-                        btn.disabled = false;
-                    }, 3000);
+                    // Mettre à jour les données locales
+                    emailsEnvoyesData[login] = { date: new Date().toISOString(), email: cred.email };
+                    // Rafraîchir l'affichage
+                    renderEtudiants();
+                    alert('✅ Email envoyé avec succès !');
                 } else if (data.useMailto) {
                     // Fallback vers mailto si pas de config email
                     btn.innerHTML = originalText;
